@@ -10,6 +10,12 @@
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#1b3027 0,transparent 38%),var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif;min-height:100vh}
 .wrap{max-width:900px;margin:auto;padding:24px 16px 45px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}.brand{display:flex;align-items:center;gap:12px}.mark{width:44px;height:44px;border-radius:13px;background:linear-gradient(145deg,var(--green),#659c3d);display:grid;place-items:center;color:#10200e;font-size:22px;font-weight:900}.eyebrow,.tag{font-size:11px;letter-spacing:2px;color:var(--green);font-weight:800}.brand h1{font-size:21px;margin:3px 0}.status{border:1px solid var(--line);padding:8px 11px;border-radius:99px;color:var(--muted);font-size:11px}.panel{background:linear-gradient(145deg,#17231f,#111a17);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 14px 40px #0002}.hero{display:grid;grid-template-columns:1.3fr .8fr;gap:14px}.hero-main{min-height:245px}.hero h2{font-size:clamp(24px,4vw,36px);margin:12px 0 6px}.sub,.muted{color:var(--muted);font-size:13px}.amount{font-size:clamp(34px,5vw,48px);font-weight:850;letter-spacing:-1.5px;margin:20px 0 4px}.progress-head{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:12px;margin:18px 0 8px}.track{height:10px;background:#293a32;border-radius:99px;overflow:hidden}.fill{height:100%;width:0;background:linear-gradient(90deg,var(--green2),var(--green));border-radius:99px;transition:width .3s}.side{display:flex;flex-direction:column;justify-content:space-between}.side-value{font-size:25px;font-weight:800;margin-top:7px}.divider{height:1px;background:var(--line);margin:16px 0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}.stat strong{display:block;font-size:23px;margin-top:12px}.stat p{margin:5px 0 0;color:var(--muted);font-size:11px}.section-title{display:flex;justify-content:space-between;align-items:end;gap:10px;margin:25px 0 11px}.section-title h3{font-size:16px;margin:0}.section-title span{font-size:11px;color:var(--muted)}.lower{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:7px;margin:12px 0}.field label{font-size:11px;color:var(--muted)}input{width:100%;background:#0d1512;border:1px solid #30443a;border-radius:10px;padding:12px;color:var(--text);font:inherit;outline:none;min-width:0}input:focus{border-color:var(--green2)}.row{display:grid;grid-template-columns:1fr 1fr;gap:9px}.btn{border:0;border-radius:10px;padding:12px 14px;font-weight:800;cursor:pointer;background:var(--green);color:#12200f;font-size:12px}.btn:hover{filter:brightness(1.07)}.btn.secondary{background:#263a31;color:var(--text);border:1px solid #3a5547}.btn.danger{background:#3b2624;color:#ffc1b9;border:1px solid #69413b}.btn:disabled{opacity:.45;cursor:not-allowed}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.actions .btn{flex:1}.challenge{display:flex;justify-content:space-between;align-items:center;gap:12px}.challenge strong{font-size:24px}.challenge p{color:var(--muted);font-size:12px;margin:5px 0}.challenge-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(55px,1fr));gap:7px;margin-top:15px}.challenge-grid .btn{padding:9px 3px;font-size:11px}.history{width:100%;border-collapse:collapse;font-size:12px;margin-top:10px}.history th{text-align:left;color:var(--muted);padding:9px 6px;border-bottom:1px solid var(--line)}.history td{padding:11px 6px;border-bottom:1px solid #22332b}.positive{color:var(--green)}.negative{color:var(--red)}.empty{text-align:center;color:var(--muted);padding:22px 6px;font-size:12px}.foot{text-align:center;color:#70857a;font-size:10px;margin-top:22px;line-height:1.6}.notice{font-size:12px;color:var(--green);min-height:16px;margin-top:8px}
 @media(max-width:680px){.wrap{padding:18px 12px 35px}.hero,.lower{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.status{display:none}.panel{padding:17px}.hero-main{min-height:235px}.section-title span{display:none}.history{font-size:10px}.history th,.history td{padding:9px 4px}}
+
+.account-planning-grid{display:grid;grid-template-columns:1.3fr .8fr;gap:14px;margin:14px 0}
+.account-planning-grid .account-overview{margin:0;min-height:190px;display:flex;flex-direction:column;justify-content:center}
+.account-planning-grid .side{min-height:190px;padding:22px}
+.account-planning-grid .balance-value{font-size:clamp(28px,4vw,42px)}
+@media(max-width:720px){.account-planning-grid{grid-template-columns:1fr}.account-planning-grid .account-overview,.account-planning-grid .side{min-height:unset}}
 </style>
 
 <style id="green-fintech-theme">
@@ -76,6 +82,21 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
  <div class="app-top-actions" aria-label="Atalhos"><span title="Privacidade">◉</span><span title="Ajuda">?</span><span title="Menu">☰</span></div>
 </div>
 
+<section id="nznUpdatePanel" class="panel" style="display:block;margin:12px 0;padding:14px;border:2px solid #b7f36b;background:#10251a">
+ <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+  <div style="flex:1;min-width:190px">
+   <div class="tag">ATUALIZAÇÃO NZN FINANCE</div>
+   <strong style="display:block;margin:6px 0" id="nznUpdateTitle">Verificador de atualizações</strong>
+   <div class="muted" id="nznUpdateMessage">Versão instalada: 1.0.4. Clique em verificar para procurar novidades.</div>
+  </div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap">
+   <button class="btn" id="nznCheckUpdates" type="button">Verificar atualizações</button>
+   <button class="btn" id="nznUpdateNow" type="button" style="display:none">Atualizar agora</button>
+  </div>
+ </div>
+</section>
+
+
 <section class="panel" id="notificationSettings" style="margin:14px 0">
  <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:space-between">
   <div style="flex:1;min-width:190px">
@@ -88,10 +109,17 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
  <div class="muted" style="font-size:11px;margin-top:10px">Você controla a permissão pelo navegador. Os avisos de depósitos, retiradas, juros CDI e meta são gerados enquanto o painel estiver aberto. Para notificações remotas mesmo com o app fechado, será necessário configurar um servidor de push.</div>
 </section>
 
-<section class="account-overview">
- <div class="balance-label">Saldo principal</div>
- <div class="balance-value" id="appMainBalance">R$ 0,00</div>
- <div class="account-chip">🏍️ Meta sua meta financeira <strong id="appGoalChip">R$ 25.000,00</strong></div>
+<section class="account-planning-grid">
+ <div class="account-overview">
+  <div class="balance-label">Saldo principal</div>
+  <div class="balance-value" id="saved">R$ 0,00</div>
+  <div class="account-chip">🏍️ Meta financeira <strong id="appGoalChip">R$ 25.000,00</strong></div>
+  <span id="appMainBalance" hidden>R$ 0,00</span>
+ </div>
+ <div class="panel side">
+  <div><div class="tag">SEU PLANEJAMENTO</div><div class="muted" style="margin-top:16px">Depósito mensal planejado</div><div class="side-value" id="monthlyHero">R$ 1.000,00</div><div class="muted">Sem contar rendimentos</div></div>
+  <div><div class="divider"></div><div class="muted">Previsão para alcançar a meta</div><div class="side-value" id="months">25 meses</div><div class="muted" id="dateNote">Estimativa baseada no saldo atual</div></div>
+ </div>
 </section>
 <div class="shortcut-strip" aria-label="Ações rápidas">
  <div class="shortcut"><button type="button" onclick="document.getElementById('amount')?.focus()">＋</button>Depositar</div>
@@ -103,15 +131,12 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
 </div>
 <div class="home-promo"><div><strong>Faça seu dinheiro trabalhar pelo seu objetivo</strong><span>Acompanhe sua economia e os juros CDI no mesmo painel.</span></div><div style="font-size:30px">🌱</div></div>
 <div class="home-card-grid">
- <div class="home-mini-card"><small>Progresso da meta</small><strong id="appProgress">0%</strong></div>
- <div class="home-mini-card"><small>Falta para sua meta</small><strong id="appRemaining">R$ 25.000,00</strong></div>
+ <div class="home-mini-card"><small>Progresso da meta</small><strong id="percent">0%</strong><div class="track" style="margin-top:12px"><div class="fill" id="bar" style="width:0%"></div></div><span id="appProgress" hidden>0%</span></div>
+ <div class="home-mini-card"><small>Quanto falta para sua meta</small><strong id="remaining">Faltam R$ 25.000,00</strong><span id="appRemaining" hidden>R$ 25.000,00</span><span id="targetLabel" hidden>Meta: R$ 25.000,00</span></div>
 </div>
 
 <header class="top"><div class="brand"><div class="mark">S</div><div><div class="eyebrow">PLANO FINANCEIRO • 2027</div><h1>NZN FINANCE</h1></div></div><div class="status">● Controle pessoal de economia</div></header>
-<section class="hero">
- <div class="panel hero-main"><div class="tag">META PRINCIPAL</div><h2>Uma conquista planejada.<br>Um depósito de cada vez.</h2><div class="amount" id="saved">R$ 0,00</div><div class="sub">Economizados para seu objetivo financeiro</div><div class="progress-head"><span>Progresso da meta</span><b id="percent">0%</b></div><div class="track"><div class="fill" id="bar"></div></div><div class="progress-head"><span id="remaining">Faltam R$ 25.000,00</span><span id="targetLabel">Meta: R$ 25.000,00</span></div></div>
- <div class="panel side"><div><div class="tag">SEU PLANEJAMENTO</div><div class="muted" style="margin-top:16px">Depósito mensal planejado</div><div class="side-value" id="monthlyHero">R$ 1.000,00</div><div class="muted">Sem contar rendimentos</div></div><div><div class="divider"></div><div class="muted">Previsão para alcançar a meta</div><div class="side-value" id="months">25 meses</div><div class="muted" id="dateNote">Estimativa baseada no saldo atual</div></div></div>
-</section>
+
 <section class="grid">
  <div class="panel stat"><div class="muted">TOTAL GUARDADO</div><strong id="statSaved">R$ 0,00</strong><p>Saldo registrado neste painel</p></div>
  <div class="panel stat"><div class="muted">FALTA PARA A META</div><strong id="statLeft">R$ 25.000,00</strong><p>Quanto falta para completar</p></div>
@@ -322,26 +347,58 @@ render();
 (()=>{
  const button=document.getElementById('enableNotifications');
  const status=document.getElementById('notificationStatus');
+ if(!button||!status)return;
+
  const update=()=>{
-   if(!('Notification' in window)){status.textContent='Este navegador não oferece suporte a notificações.';button.disabled=true;return}
-   status.textContent=Notification.permission==='granted'?'Notificações ativadas neste navegador.':Notification.permission==='denied'?'Permissão bloqueada. Altere nas configurações do navegador.':'Notificações ainda não ativadas neste navegador.';
+   if(!('Notification' in window)){
+     status.textContent='Este navegador não oferece suporte a notificações.';
+     button.disabled=true; return;
+   }
+   const p=Notification.permission;
+   status.textContent=p==='granted'
+     ? 'Permissão ativada. Faça um teste pelo botão abaixo; os avisos de movimentações aparecem enquanto o painel estiver aberto.'
+     : p==='denied'
+       ? 'Permissão bloqueada. Altere as notificações nas configurações do navegador/Windows.'
+       : 'Notificações ainda não autorizadas neste aplicativo.';
+   button.textContent=p==='granted'?'Testar notificação':'Ativar notificações';
  };
- window.nznNotify=(title,body)=>{
-   if(!('Notification' in window)||Notification.permission!=='granted')return;
+
+ window.nznNotify=async(title,body)=>{
+   if(!('Notification' in window)||Notification.permission!=='granted')return false;
    try{
-     if(navigator.serviceWorker&&navigator.serviceWorker.controller){
-       navigator.serviceWorker.ready.then(reg=>reg.showNotification(title,{body,icon:'nzn-icon.svg',badge:'nzn-icon.svg',tag:'nzn-'+Date.now()})).catch(()=>new Notification(title,{body,icon:'nzn-icon.svg'}));
-     }else{new Notification(title,{body,icon:'nzn-icon.svg'})}
-   }catch(e){}
+     if('serviceWorker' in navigator){
+       const reg=await navigator.serviceWorker.ready;
+       if(reg && reg.showNotification){
+         await reg.showNotification(title,{body,icon:'./nzn-icon.svg',badge:'./nzn-icon.svg',tag:'nzn-'+Date.now(),renotify:true});
+         return true;
+       }
+     }
+     new Notification(title,{body,icon:'./nzn-icon.svg'});
+     return true;
+   }catch(err){
+     try{ new Notification(title,{body}); return true; }catch(e){return false;}
+   }
  };
+
  button.addEventListener('click',async()=>{
-   if(!('Notification' in window)){update();return}
+   if(!('Notification' in window)){update();return;}
    try{
-     const permission=await Notification.requestPermission();
+     if(Notification.permission!=='granted'){
+       const permission=await Notification.requestPermission();
+       update();
+       if(permission!=='granted')return;
+     }
+     const ok=await window.nznNotify('NZN FINANCE — teste de notificação','Está tudo certo! Os avisos de depósitos e retiradas poderão aparecer enquanto o painel estiver aberto.');
+     status.textContent=ok
+       ? 'Teste enviado. Se não apareceu, confira o Assistente de foco e as notificações do Windows.'
+       : 'A permissão está ativa, mas o navegador não conseguiu mostrar o aviso. Confira as configurações de notificações do Windows.';
      update();
-     if(permission==='granted')window.nznNotify('NZN FINANCE ativado','Você receberá avisos de movimentações enquanto usar o painel.');
-   }catch(e){status.textContent='Não foi possível solicitar permissão neste navegador.'}
+     if(ok)status.textContent='Teste enviado! Se não apareceu, confira as notificações do Windows e o Assistente de foco.';
+   }catch(e){
+     status.textContent='Não foi possível testar a notificação. Confira as permissões do navegador e do Windows.';
+   }
  });
+
  if('serviceWorker' in navigator && (location.protocol==='https:'||location.hostname==='localhost')){
    window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
  }
@@ -349,5 +406,60 @@ render();
 })();
 </script>
 
+<script id="nzn-auto-updater">
+(()=>{
+ const APP_VERSION='1.0.4';
+ const panel=document.getElementById('nznUpdatePanel');
+ const checkButton=document.getElementById('nznCheckUpdates');
+ const updateButton=document.getElementById('nznUpdateNow');
+ const title=document.getElementById('nznUpdateTitle');
+ const message=document.getElementById('nznUpdateMessage');
+ if(!panel||!checkButton||!updateButton||!message)return;
+ if(!('serviceWorker' in navigator)||location.protocol!=='https:'){
+   message.textContent='Versão '+APP_VERSION+'. Atualização automática requer HTTPS.';
+   return;
+ }
+ let registration=null,checking=false,reloading=false;
+ const status=(h,m)=>{title.textContent=h;message.textContent=m;};
+ const available=()=>{status('Nova atualização disponível!','A nova versão está pronta. Seus dados locais serão preservados.');updateButton.style.display='inline-flex';checkButton.textContent='Verificar novamente';};
+ const current=()=>{updateButton.style.display='none';status('NZN FINANCE está atualizado','Versão instalada: '+APP_VERSION+'. Nenhuma atualização foi encontrada.');};
+ const inspect=()=>{
+   if(!registration)return;
+   if(registration.waiting&&navigator.serviceWorker.controller){available();return;}
+   if(registration.installing){
+     const worker=registration.installing;
+     worker.addEventListener('statechange',()=>{
+       if(worker.state==='installed'){
+         if(navigator.serviceWorker.controller)available();
+         else status('NZN FINANCE pronto','Versão '+APP_VERSION+' instalada. Recarregue o aplicativo.');
+       }
+     });
+   }
+ };
+ navigator.serviceWorker.addEventListener('controllerchange',()=>{if(!reloading){reloading=true;location.reload();}});
+ updateButton.addEventListener('click',()=>{
+   if(registration&&registration.waiting){updateButton.disabled=true;updateButton.textContent='Atualizando…';registration.waiting.postMessage({type:'SKIP_WAITING'});}
+   else if(registration){status('Verificando…','Consultando a versão publicada.');registration.update().then(inspect).catch(()=>status('Falha na verificação','Confira a conexão e tente novamente.'));}
+ });
+ checkButton.addEventListener('click',async()=>{
+   if(checking)return;checking=true;checkButton.disabled=true;checkButton.textContent='Verificando…';
+   try{
+     if(!registration)registration=await navigator.serviceWorker.register('./sw.js');
+     await registration.update();await new Promise(r=>setTimeout(r,1500));
+     if(registration.waiting&&navigator.serviceWorker.controller)available();
+     else if(registration.installing)inspect();else current();
+   }catch(e){status('Não foi possível verificar','Confira a conexão e tente novamente.');}
+   finally{checking=false;checkButton.disabled=false;if(checkButton.textContent==='Verificando…')checkButton.textContent='Verificar atualizações';}
+ });
+ window.addEventListener('load',async()=>{
+   try{
+     registration=await navigator.serviceWorker.register('./sw.js');
+     registration.addEventListener('updatefound',inspect);
+     if(registration.waiting&&navigator.serviceWorker.controller)available();else current();
+     await registration.update();setTimeout(inspect,1000);
+   }catch(e){status('Verificação indisponível','Não foi possível conectar ao serviço de atualização.');}
+ });
+})();
+</script>
 </body>
 </html>
