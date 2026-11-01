@@ -1,26 +1,21 @@
-NZN FINANCE — Atualização 1.0.4
+NZN FINANCE — Versão 1.0.5
 
-O QUE MUDA
-- Versão do aplicativo atualizada para 1.0.4.
-- Novos navegadores começam com saldo R$ 0,00, juros/CDI R$ 0,00 e histórico vazio.
-- Os dados já salvos no mesmo navegador são preservados: a chave de armazenamento local foi mantida.
-- Cache do aplicativo atualizado para que o navegador reconheça os novos arquivos.
+CORREÇÃO
+- Corrigido o menu superior ☰: os ícones do cabeçalho agora são botões reais.
+- O menu abre/fecha e oferece atalhos para atualização, notificações e ajuda.
+- Tecla Esc e clique fora fecham o menu.
+- Atualizador informa a versão 1.0.5.
 
-IMPORTANTE SOBRE OS DADOS
-- Os dados ficam armazenados localmente no navegador e dispositivo.
-- Um navegador sem dados anteriores inicia zerado.
-- Não use “Limpar dados do site” para atualizar, pois isso pode apagar dados locais.
-- Este aplicativo ainda não possui contas individuais nem sincronização entre dispositivos.
+PRESERVAÇÃO
+- A chave de armazenamento local foi mantida.
+- Os dados já salvos neste navegador não são apagados pela atualização.
+- O cache do service worker foi atualizado para v9.
 
-COMO PUBLICAR PELO GITHUB
-1. Abra o repositório GitHub: nenezeraoyt-droid/NZN-FINANCE.
-2. Entre na pasta NZN_FINANCE_PWA_Instalavel.
-3. Clique em Add file > Upload files.
-4. Extraia este ZIP e envie os cinco arquivos para o mesmo diretório: index.html, sw.js, manifest.webmanifest, nzn-icon.svg e LEIA-ME.txt.
-5. Confirme o envio com Commit changes na branch main.
-6. Como o Netlify já está conectado ao GitHub, ele deverá iniciar um deploy automaticamente.
-7. Aguarde o deploy ficar Published/Completed no Netlify.
-8. Abra o aplicativo e clique em “Verificar atualizações”. Se necessário, feche e abra o app novamente.
+PUBLICAÇÃO
+1. No GitHub, abra a pasta que contém o index.html principal do site.
+2. Envie os cinco arquivos deste ZIP diretamente nessa pasta (não envie o ZIP nem uma pasta interna).
+3. Confirme com Commit changes na branch main.
+4. Aguarde o deploy automático do Netlify ficar Published.
+5. Abra o app e use Verificar atualizações.
 
-OBSERVAÇÃO
-O botão “Verificar atualizações” instala uma versão que já foi publicada. O GitHub recebe os arquivos e o Netlify faz a publicação automática; o botão do app não envia arquivos ao GitHub nem publica mudanças por conta própria.
+Os dados continuam locais ao navegador/dispositivo; esta versão não adiciona contas individuais nem sincronização.

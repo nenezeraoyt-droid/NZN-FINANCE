@@ -74,12 +74,36 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="NZN FINANCE">
 <link rel="manifest" href="manifest.webmanifest">
+
+
+<style id="nzn-menu-style">
+.app-topbar{position:relative}
+.app-top-actions{align-items:center}
+.app-top-actions .top-action{border:1px solid #ffffff35;background:#075536;color:#f2fff6;border-radius:10px;min-width:38px;height:38px;font-size:20px;font-weight:800;cursor:pointer}
+.app-top-actions .top-action:focus-visible,.nzn-menu button:focus-visible{outline:3px solid #c5fa83;outline-offset:2px}
+.nzn-menu{position:absolute;z-index:1000;right:14px;top:calc(100% - 8px);width:min(260px,calc(100vw - 32px));padding:9px;background:#082b1d;border:1px solid #39815e;border-radius:14px;box-shadow:0 12px 30px #0008}
+.nzn-menu[hidden]{display:none}
+.nzn-menu button{display:block;width:100%;text-align:left;padding:12px 11px;margin:2px 0;border:0;border-radius:9px;background:transparent;color:#f2fff6;font:600 13px inherit;cursor:pointer}
+.nzn-menu button:hover{background:#176747}
+.nzn-menu #menuFeedback{padding:9px 11px;color:#c0e2ce;font-size:11px;border-top:1px solid #286447;margin-top:5px}
+</style>
+
 </head>
 <body>
 <div class="wrap">
 <div class="app-topbar">
  <div class="app-brand"><div class="app-avatar">S</div><div><div style="font-size:10px;opacity:.8;letter-spacing:1.5px">SEU PAINEL FINANCEIRO</div><div>NZN FINANCE</div></div></div>
- <div class="app-top-actions" aria-label="Atalhos"><span title="Privacidade">◉</span><span title="Ajuda">?</span><span title="Menu">☰</span></div>
+ <div class="app-top-actions" aria-label="Atalhos">
+   <button class="top-action" type="button" id="privacyShortcut" aria-label="Privacidade" title="Privacidade">◉</button>
+   <button class="top-action" type="button" id="helpShortcut" aria-label="Ajuda" title="Ajuda">?</button>
+   <button class="top-action" type="button" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nznMenu" title="Menu">☰</button>
+  </div>
+  <nav id="nznMenu" class="nzn-menu" hidden aria-label="Menu principal">
+   <button type="button" id="menuCheckUpdate">↻ Verificar atualização</button>
+   <button type="button" id="menuNotifications">♧ Notificações</button>
+   <button type="button" id="menuHelp">? Ajuda</button>
+   <div id="menuFeedback" role="status" aria-live="polite">NZN FINANCE • Versão 1.0.5</div>
+  </nav>
 </div>
 
 <section id="nznUpdatePanel" class="panel" style="display:block;margin:12px 0;padding:14px;border:2px solid #b7f36b;background:#10251a">
@@ -87,7 +111,7 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
   <div style="flex:1;min-width:190px">
    <div class="tag">ATUALIZAÇÃO NZN FINANCE</div>
    <strong style="display:block;margin:6px 0" id="nznUpdateTitle">Verificador de atualizações</strong>
-   <div class="muted" id="nznUpdateMessage">Versão instalada: 1.0.4. Clique em verificar para procurar novidades.</div>
+   <div class="muted" id="nznUpdateMessage">Versão instalada: 1.0.5. Clique em verificar para procurar novidades.</div>
   </div>
   <div style="display:flex;gap:8px;flex-wrap:wrap">
    <button class="btn" id="nznCheckUpdates" type="button">Verificar atualizações</button>
@@ -408,7 +432,7 @@ render();
 
 <script id="nzn-auto-updater">
 (()=>{
- const APP_VERSION='1.0.4';
+ const APP_VERSION='1.0.5';
  const panel=document.getElementById('nznUpdatePanel');
  const checkButton=document.getElementById('nznCheckUpdates');
  const updateButton=document.getElementById('nznUpdateNow');
@@ -461,5 +485,35 @@ render();
  });
 })();
 </script>
+
+
+<script id="nzn-menu-actions">
+(()=> {
+ const toggle=document.getElementById('menuToggle');
+ const menu=document.getElementById('nznMenu');
+ const feedback=document.getElementById('menuFeedback');
+ if(!toggle||!menu)return;
+ const close=()=>{menu.hidden=true;toggle.setAttribute('aria-expanded','false')};
+ const open=()=>{menu.hidden=false;toggle.setAttribute('aria-expanded','true')};
+ toggle.addEventListener('click',e=>{e.stopPropagation();menu.hidden?open():close()});
+ menu.addEventListener('click',e=>e.stopPropagation());
+ document.addEventListener('click',()=>close());
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+ const goTo=(id,msg)=>{
+  const el=document.getElementById(id);
+  if(el){el.scrollIntoView({behavior:'smooth',block:'start'});close();}
+  else if(feedback)feedback.textContent=msg||'Seção não encontrada nesta versão.';
+ };
+ document.getElementById('menuCheckUpdate')?.addEventListener('click',()=>goTo('nznUpdatePanel'));
+ document.getElementById('menuNotifications')?.addEventListener('click',()=>goTo('notificationSettings'));
+ document.getElementById('menuHelp')?.addEventListener('click',()=>goTo('bankConnection','Ajuda: confira as orientações nas seções do aplicativo.'));
+ document.getElementById('helpShortcut')?.addEventListener('click',()=>goTo('bankConnection'));
+ document.getElementById('privacyShortcut')?.addEventListener('click',()=>{
+  open();
+  if(feedback)feedback.textContent='Seus dados ficam armazenados neste navegador e dispositivo.';
+ });
+})();
+</script>
+
 </body>
 </html>

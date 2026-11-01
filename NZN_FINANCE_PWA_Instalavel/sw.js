@@ -1,4 +1,4 @@
-const CACHE='nzn-finance-pwa-v8';
+const CACHE='nzn-finance-pwa-v9';
 const CORE=['./','./index.html','./manifest.webmanifest','./nzn-icon.svg'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)));});
 self.addEventListener('message',event=>{if(event.data&&event.data.type==='SKIP_WAITING')self.skipWaiting();});
