@@ -1,0 +1,24 @@
+NZN FINANCE — PWA INSTALÁVEL
+
+CONTEÚDO
+- index.html: aplicação web (necessário para o navegador renderizar a interface)
+- manifest.webmanifest: nome, ícone e modo de instalação
+- sw.js: service worker para cache/offline básico e clique em notificações
+- nzn-icon.svg: ícone do aplicativo
+
+PUBLICAÇÃO
+1. Envie TODOS os arquivos desta pasta para a raiz de um serviço de hospedagem estática.
+2. Ative HTTPS no domínio.
+3. Abra o endereço HTTPS no Chrome/Edge.
+4. Android: menu do navegador > Instalar app / Adicionar à tela inicial.
+5. PC: use o ícone Instalar na barra de endereço ou menu do navegador.
+
+NOTIFICAÇÕES
+- O usuário precisa conceder permissão no navegador.
+- Avisos gerados por ações no painel aparecem enquanto a aplicação está aberta.
+- Notificações push remotas com o app fechado exigem um servidor push, chaves VAPID e backend; isso não está incluído neste pacote.
+- O PWA não pode ser instalado diretamente abrindo os arquivos locais; precisa estar hospedado em HTTPS (localhost serve para testes).
+
+SEGURANÇA
+- Esta aplicação não conecta a contas bancárias.
+- Não informe senha bancária no aplicativo.

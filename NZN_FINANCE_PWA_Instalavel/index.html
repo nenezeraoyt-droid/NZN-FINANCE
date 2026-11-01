@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1110">
+<title>NZN FINANCE 2027</title>
+<style>
+:root{--bg:#0b1110;--panel:#121c19;--panel2:#17231f;--line:#263a32;--text:#eef6f0;--muted:#9aada3;--green:#b7f36b;--green2:#7ecb50;--red:#f18c82}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#1b3027 0,transparent 38%),var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif;min-height:100vh}
+.wrap{max-width:900px;margin:auto;padding:24px 16px 45px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}.brand{display:flex;align-items:center;gap:12px}.mark{width:44px;height:44px;border-radius:13px;background:linear-gradient(145deg,var(--green),#659c3d);display:grid;place-items:center;color:#10200e;font-size:22px;font-weight:900}.eyebrow,.tag{font-size:11px;letter-spacing:2px;color:var(--green);font-weight:800}.brand h1{font-size:21px;margin:3px 0}.status{border:1px solid var(--line);padding:8px 11px;border-radius:99px;color:var(--muted);font-size:11px}.panel{background:linear-gradient(145deg,#17231f,#111a17);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 14px 40px #0002}.hero{display:grid;grid-template-columns:1.3fr .8fr;gap:14px}.hero-main{min-height:245px}.hero h2{font-size:clamp(24px,4vw,36px);margin:12px 0 6px}.sub,.muted{color:var(--muted);font-size:13px}.amount{font-size:clamp(34px,5vw,48px);font-weight:850;letter-spacing:-1.5px;margin:20px 0 4px}.progress-head{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:12px;margin:18px 0 8px}.track{height:10px;background:#293a32;border-radius:99px;overflow:hidden}.fill{height:100%;width:0;background:linear-gradient(90deg,var(--green2),var(--green));border-radius:99px;transition:width .3s}.side{display:flex;flex-direction:column;justify-content:space-between}.side-value{font-size:25px;font-weight:800;margin-top:7px}.divider{height:1px;background:var(--line);margin:16px 0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}.stat strong{display:block;font-size:23px;margin-top:12px}.stat p{margin:5px 0 0;color:var(--muted);font-size:11px}.section-title{display:flex;justify-content:space-between;align-items:end;gap:10px;margin:25px 0 11px}.section-title h3{font-size:16px;margin:0}.section-title span{font-size:11px;color:var(--muted)}.lower{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:7px;margin:12px 0}.field label{font-size:11px;color:var(--muted)}input{width:100%;background:#0d1512;border:1px solid #30443a;border-radius:10px;padding:12px;color:var(--text);font:inherit;outline:none;min-width:0}input:focus{border-color:var(--green2)}.row{display:grid;grid-template-columns:1fr 1fr;gap:9px}.btn{border:0;border-radius:10px;padding:12px 14px;font-weight:800;cursor:pointer;background:var(--green);color:#12200f;font-size:12px}.btn:hover{filter:brightness(1.07)}.btn.secondary{background:#263a31;color:var(--text);border:1px solid #3a5547}.btn.danger{background:#3b2624;color:#ffc1b9;border:1px solid #69413b}.btn:disabled{opacity:.45;cursor:not-allowed}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.actions .btn{flex:1}.challenge{display:flex;justify-content:space-between;align-items:center;gap:12px}.challenge strong{font-size:24px}.challenge p{color:var(--muted);font-size:12px;margin:5px 0}.challenge-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(55px,1fr));gap:7px;margin-top:15px}.challenge-grid .btn{padding:9px 3px;font-size:11px}.history{width:100%;border-collapse:collapse;font-size:12px;margin-top:10px}.history th{text-align:left;color:var(--muted);padding:9px 6px;border-bottom:1px solid var(--line)}.history td{padding:11px 6px;border-bottom:1px solid #22332b}.positive{color:var(--green)}.negative{color:var(--red)}.empty{text-align:center;color:var(--muted);padding:22px 6px;font-size:12px}.foot{text-align:center;color:#70857a;font-size:10px;margin-top:22px;line-height:1.6}.notice{font-size:12px;color:var(--green);min-height:16px;margin-top:8px}
+@media(max-width:680px){.wrap{padding:18px 12px 35px}.hero,.lower{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.status{display:none}.panel{padding:17px}.hero-main{min-height:235px}.section-title span{display:none}.history{font-size:10px}.history th,.history td{padding:9px 4px}}
+</style>
+
+<style id="green-fintech-theme">
+:root{--bg:#073d2b;--panel:#10583d;--panel2:#176747;--line:#32845e;--text:#f2fff6;--muted:#c0e2ce;--green:#c5fa83;--green2:#8bd34f;--red:#ffaaa0}
+body{background:radial-gradient(ellipse at 15% 0%,#267c4e 0,transparent 42%),linear-gradient(145deg,#063b2a,#0b6945 65%,#06432f);color:var(--text)}
+.panel{background:linear-gradient(145deg,#10583d,#0b4934);border-color:#32845e;box-shadow:0 14px 40px #00271955}
+.status{background:#0b4934;border-color:#32845e;color:#d2eadb}
+input{background:#073d2b;border-color:#39815e;color:#f2fff6}
+.track{background:#174d38}.btn{background:#c5fa83;color:#10351f}
+.btn.secondary{background:#176747;color:#f2fff6;border-color:#438d68}
+.btn.danger{background:#65342e;color:#ffe0dc;border-color:#a75a4e}
+.history td{border-bottom-color:#286447}.history th{border-bottom-color:#39815e}
+.divider{background:#287b57}.foot{color:#c0e2ce}
+.bank-card{background:linear-gradient(135deg,#c5fa83,#76c94b);color:#123522;border-radius:18px;padding:20px}
+.bank-card .muted{color:#315c3c}
+.bank-select{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:9px}
+.bank-option{border:1px solid #39815e;background:#073d2b;color:#f2fff6;border-radius:12px;padding:13px 10px;font-weight:700;cursor:pointer}
+.bank-option[aria-pressed="true"]{border:2px solid #c5fa83;background:#176747}
+.bank-status{padding:11px 13px;border-radius:12px;background:#073d2b;border:1px solid #39815e;color:#d8f5df;font-size:13px}
+@media(max-width:680px){.bank-select{grid-template-columns:repeat(2,1fr)}}
+</style>
+
+<style id="banking-home-style">
+body{background:#061b13!important;color:#f4fff7!important}
+.wrap{max-width:980px;padding-top:16px}
+.app-topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;margin:-16px -18px 20px;background:linear-gradient(120deg,#087a48,#0b5c38);border-radius:0 0 20px 20px}
+.app-brand{display:flex;align-items:center;gap:11px;font-weight:850;letter-spacing:.5px}
+.app-avatar{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#d4ff9d;color:#10472b;font-weight:900;font-size:20px}
+.app-top-actions{display:flex;gap:16px;color:#edfff3;font-size:20px}
+.account-overview{background:#07110d;border:1px solid #174c34;border-radius:20px;padding:22px;margin-bottom:15px}
+.account-overview .balance-label{font-size:14px;color:#c0d9ca;font-weight:650}
+.account-overview .balance-value{font-size:30px;font-weight:850;margin-top:8px}
+.account-chip{display:inline-flex;align-items:center;gap:8px;margin-top:17px;padding:9px 13px;border-radius:30px;background:#173b2a;color:#dfffe9;font-size:12px}
+.shortcut-strip{display:flex;gap:18px;overflow-x:auto;padding:14px 3px 20px;scrollbar-width:thin}
+.shortcut{flex:0 0 92px;text-align:center;color:#f0fff5;font-size:12px;font-weight:650}
+.shortcut button{width:78px;height:78px;border:0;border-radius:50%;background:#174b32;color:#d9ff9d;font-size:27px;display:grid;place-items:center;margin:0 auto 9px;cursor:pointer;box-shadow:0 5px 18px #001b1044}
+.shortcut button:active{transform:scale(.96)}
+.home-promo{display:flex;align-items:center;justify-content:space-between;gap:15px;background:#183b2b;border:1px solid #285b40;border-radius:19px;padding:19px;margin:8px 0 14px}
+.home-promo strong{display:block;font-size:15px;margin-bottom:5px}.home-promo span{font-size:12px;color:#c4dfce}
+.home-card-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 18px}
+.home-mini-card{background:#102b1d;border:1px solid #24583a;border-radius:18px;padding:16px}
+.home-mini-card small{color:#b5d2c0}.home-mini-card strong{display:block;font-size:20px;margin-top:8px}
+.bottom-app-nav{display:flex;justify-content:space-around;gap:8px;position:sticky;bottom:8px;z-index:10;margin:18px auto 12px;padding:10px;background:#07110d;border:1px solid #24583a;border-radius:28px;box-shadow:0 8px 28px #0008;max-width:520px}
+.bottom-app-nav button{border:0;background:transparent;color:#c4d8ca;padding:8px 13px;border-radius:22px;font-size:11px;font-weight:700;cursor:pointer}
+.bottom-app-nav button.active{background:#12623c;color:#e5ffb9}
+.panel{background:linear-gradient(145deg,#103d29,#0b2b1d)!important;border-color:#24583a!important}
+.btn{background:#c5fa83;color:#10351f}.btn.secondary{background:#185c3b;color:#f2fff6;border-color:#397a55}
+input{background:#071b12;border-color:#286343;color:#f2fff6}
+.track{background:#1d4a31}
+@media(max-width:680px){.wrap{padding:16px 12px 30px}.app-topbar{margin:-16px -12px 17px;padding:16px 15px}.shortcut{flex-basis:83px}.shortcut button{width:70px;height:70px}.home-card-grid{grid-template-columns:1fr 1fr}.account-overview .balance-value{font-size:28px}}
+</style>
+
+
+<meta name="theme-color" content="#087a48">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="NZN FINANCE">
+<link rel="manifest" href="manifest.webmanifest">
+</head>
+<body>
+<div class="wrap">
+<div class="app-topbar">
+ <div class="app-brand"><div class="app-avatar">S</div><div><div style="font-size:10px;opacity:.8;letter-spacing:1.5px">SEU PAINEL FINANCEIRO</div><div>NZN FINANCE</div></div></div>
+ <div class="app-top-actions" aria-label="Atalhos"><span title="Privacidade">◉</span><span title="Ajuda">?</span><span title="Menu">☰</span></div>
+</div>
+
+<section class="panel" id="notificationSettings" style="margin:14px 0">
+ <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:space-between">
+  <div style="flex:1;min-width:190px">
+   <div class="tag">NOTIFICAÇÕES NZN FINANCE</div>
+   <strong style="display:block;margin:7px 0">Avisos no celular e no computador</strong>
+   <div class="muted" id="notificationStatus">Notificações ainda não ativadas neste navegador.</div>
+  </div>
+  <button class="btn" id="enableNotifications" type="button">Ativar notificações</button>
+ </div>
+ <div class="muted" style="font-size:11px;margin-top:10px">Você controla a permissão pelo navegador. Os avisos de depósitos, retiradas, juros CDI e meta são gerados enquanto o painel estiver aberto. Para notificações remotas mesmo com o app fechado, será necessário configurar um servidor de push.</div>
+</section>
+
+<section class="account-overview">
+ <div class="balance-label">Saldo principal</div>
+ <div class="balance-value" id="appMainBalance">R$ 0,00</div>
+ <div class="account-chip">🏍️ Meta sua meta financeira <strong id="appGoalChip">R$ 25.000,00</strong></div>
+</section>
+<div class="shortcut-strip" aria-label="Ações rápidas">
+ <div class="shortcut"><button type="button" onclick="document.getElementById('amount')?.focus()">＋</button>Depositar</div>
+ <div class="shortcut"><button type="button" onclick="document.getElementById('amount')?.focus()">↘</button>Retirar</div>
+ <div class="shortcut"><button type="button" onclick="document.getElementById('cdiInterest')?.scrollIntoView({behavior:'smooth'})">％</button>Juros CDI</div>
+ <div class="shortcut"><button type="button" onclick="document.getElementById('bankConnection')?.scrollIntoView({behavior:'smooth'})">▣</button>Conectar banco</div>
+ <div class="shortcut"><button type="button" onclick="document.getElementById('challengeGrid')?.scrollIntoView({behavior:'smooth'})">◎</button>Desafio</div>
+ <div class="shortcut"><button type="button" onclick="document.getElementById('historyWrap')?.scrollIntoView({behavior:'smooth'})">↗</button>Histórico</div>
+</div>
+<div class="home-promo"><div><strong>Faça seu dinheiro trabalhar pelo seu objetivo</strong><span>Acompanhe sua economia e os juros CDI no mesmo painel.</span></div><div style="font-size:30px">🌱</div></div>
+<div class="home-card-grid">
+ <div class="home-mini-card"><small>Progresso da meta</small><strong id="appProgress">0%</strong></div>
+ <div class="home-mini-card"><small>Falta para sua meta</small><strong id="appRemaining">R$ 25.000,00</strong></div>
+</div>
+
+<header class="top"><div class="brand"><div class="mark">S</div><div><div class="eyebrow">PLANO FINANCEIRO • 2027</div><h1>NZN FINANCE</h1></div></div><div class="status">● Controle pessoal de economia</div></header>
+<section class="hero">
+ <div class="panel hero-main"><div class="tag">META PRINCIPAL</div><h2>Uma conquista planejada.<br>Um depósito de cada vez.</h2><div class="amount" id="saved">R$ 0,00</div><div class="sub">Economizados para seu objetivo financeiro</div><div class="progress-head"><span>Progresso da meta</span><b id="percent">0%</b></div><div class="track"><div class="fill" id="bar"></div></div><div class="progress-head"><span id="remaining">Faltam R$ 25.000,00</span><span id="targetLabel">Meta: R$ 25.000,00</span></div></div>
+ <div class="panel side"><div><div class="tag">SEU PLANEJAMENTO</div><div class="muted" style="margin-top:16px">Depósito mensal planejado</div><div class="side-value" id="monthlyHero">R$ 1.000,00</div><div class="muted">Sem contar rendimentos</div></div><div><div class="divider"></div><div class="muted">Previsão para alcançar a meta</div><div class="side-value" id="months">25 meses</div><div class="muted" id="dateNote">Estimativa baseada no saldo atual</div></div></div>
+</section>
+<section class="grid">
+ <div class="panel stat"><div class="muted">TOTAL GUARDADO</div><strong id="statSaved">R$ 0,00</strong><p>Saldo registrado neste painel</p></div>
+ <div class="panel stat"><div class="muted">FALTA PARA A META</div><strong id="statLeft">R$ 25.000,00</strong><p>Quanto falta para completar</p></div>
+ <div class="panel stat"><div class="muted">MOVIMENTAÇÕES</div><strong id="count">0</strong><p>Depósitos e retiradas</p></div>
+</section>
+<div class="section-title"><h3>Movimentar sua economia</h3><span>Registre cada depósito ou retirada</span></div>
+<section class="lower">
+ <div class="panel"><div class="tag">NOVO LANÇAMENTO</div><div class="field"><label for="amount">Valor (R$)</label><input id="amount" type="number" min="0.01" step="0.01" placeholder="Ex.: 1000"></div><div class="field"><label for="description">Descrição</label><input id="description" maxlength="70" placeholder="Ex.: Depósito mensal"></div><div class="actions"><button class="btn" id="add">＋ Registrar depósito</button><button class="btn danger" id="withdraw">− Registrar retirada</button></div><div class="notice" id="notice" aria-live="polite"></div></div>
+ <div class="panel"><div class="tag">CONFIGURAÇÕES DA META</div><div class="row"><div class="field"><label for="goal">Meta total (R$)</label><input id="goal" type="number" min="1" step="100" value="25000"></div><div class="field"><label for="monthly">Depósito mensal (R$)</label><input id="monthly" type="number" min="1" step="50" value="1000"></div></div><div class="actions"><button class="btn secondary" id="saveSettings">Salvar planejamento</button></div><p class="muted">Ajuste os valores quando seu planejamento mudar.</p></div>
+</section>
+<div class="section-title"><h3>Desafio de economia • R$ 500</h3><span>Pequenos valores também contam</span></div>
+<section class="panel"><div class="challenge"><div><strong id="challengeTotal">R$ 0,00 <span class="muted" style="font-size:12px">de R$ 500,00</span></strong><p id="challengeText">Marque valores que você já separou.</p></div><button class="btn secondary" id="resetChallenge">Reiniciar</button></div><div class="progress-head"><span>Progresso do desafio</span><b id="challengePercent">0%</b></div><div class="track"><div class="fill" id="challengeBar"></div></div><div class="challenge-grid" id="challengeGrid"></div></section>
+
+
+<div class="section-title"><h3>Juros positivos • CDI</h3><span>Rendimento somado ao saldo principal</span></div>
+<section class="panel" id="cdiInterest">
+ <div class="tag">RENDIMENTO SOBRE O SALDO GUARDADO</div>
+ <p class="muted">Informe uma taxa CDI anual de referência. O painel calcula uma estimativa mensal e, quando você aplicar, soma o rendimento ao saldo principal da meta Sahara.</p>
+ <div class="row">
+  <div class="field"><label for="cdiRate">CDI anual (%)</label><input id="cdiRate" type="number" min="0" max="100" step="0.01" value="10.00" placeholder="Ex.: 10,00"></div>
+  <div class="field"><label>Rendimento estimado do mês</label><div id="cdiEstimate" style="padding:12px;border:1px solid #39815e;border-radius:10px;background:#073d2b;font-weight:800">R$ 0,00</div></div>
+ </div>
+ <div class="actions"><button class="btn" id="applyCDI" type="button">＋ Somar juros ao saldo principal</button></div>
+ <div class="muted" style="margin-top:9px;font-size:11px">Estimativa simplificada: taxa anual convertida em taxa mensal equivalente, aplicada ao saldo atual. Não consulta a taxa CDI em tempo real nem substitui o cálculo da instituição financeira. Informe a taxa correta do seu investimento.</div>
+ <div class="notice" id="cdiNotice" role="status" aria-live="polite"></div>
+</section>
+<div class="section-title"><h3>Conectar banco</h3><span>Open Finance • autorização segura</span></div>
+<section class="panel" id="bankConnection">
+ <div class="bank-card">
+  <div style="font-size:11px;font-weight:800;letter-spacing:1.5px">NZN FINANCE • CONEXÃO FINANCEIRA</div>
+  <h2 style="margin:12px 0 5px;font-size:25px">Seu dinheiro em um só lugar.</h2>
+  <div class="muted">Organize sua vida financeira junto com sua meta da sua meta financeira.</div>
+ </div>
+ <div style="margin-top:18px">
+  <div class="tag">1. ESCOLHA SEU BANCO</div>
+  <p class="muted">Selecione uma instituição para iniciar a demonstração.</p>
+  <div class="bank-select" id="bankChoices">
+   <button class="bank-option" type="button" data-bank="Nubank" aria-pressed="false">Nubank</button>
+   <button class="bank-option" type="button" data-bank="Caixa" aria-pressed="false">Caixa</button>
+   <button class="bank-option" type="button" data-bank="Banco do Brasil" aria-pressed="false">Banco do Brasil</button>
+   <button class="bank-option" type="button" data-bank="Itaú" aria-pressed="false">Itaú</button>
+   <button class="bank-option" type="button" data-bank="Bradesco" aria-pressed="false">Bradesco</button>
+   <button class="bank-option" type="button" data-bank="Outro banco" aria-pressed="false">Outro banco</button>
+  </div>
+  <div style="margin-top:17px">
+   <div class="tag">2. AUTORIZAÇÃO</div>
+   <p class="muted">Em uma integração real, você será direcionado ao ambiente oficial do banco para autorizar o compartilhamento. Esta versão é demonstrativa: não acessa bancos nem consulta saldos reais.</p>
+   <label style="display:flex;gap:9px;align-items:flex-start;font-size:12px;color:var(--muted);margin:12px 0">
+    <input id="bankConsent" type="checkbox" style="width:auto;margin-top:2px">
+    <span>Entendi que esta demonstração não conecta minha conta e que não devo informar senha, código ou dados bancários aqui.</span>
+   </label>
+   <button class="btn" id="connectBank" type="button" disabled>Conectar meu banco</button>
+   <div class="bank-status" id="bankStatus" role="status" aria-live="polite" style="margin-top:12px">Nenhum banco selecionado.</div>
+  </div>
+ </div>
+</section>
+<div class="section-title"><h3>Histórico de movimentações</h3><span>Mais recentes primeiro</span></div>
+<section class="panel"><div id="historyWrap"><div class="empty">Nenhuma movimentação registrada ainda.</div></div><div class="actions"><button class="btn secondary" id="export">Exportar histórico (CSV)</button><button class="btn danger" id="resetAll">Zerar painel</button></div></section>
+
+<nav class="bottom-app-nav" aria-label="Navegação rápida">
+ <button class="active" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})">⌂ Início</button>
+ <button type="button" onclick="document.getElementById('cdiInterest')?.scrollIntoView({behavior:'smooth'})">％ CDI</button>
+ <button type="button" onclick="document.getElementById('challengeGrid')?.scrollIntoView({behavior:'smooth'})">◎ Metas</button>
+ <button type="button" onclick="document.getElementById('historyWrap')?.scrollIntoView({behavior:'smooth'})">▤ Histórico</button>
+</nav>
+
+<div class="foot">NZN FINANCE 2027 • Seus dados ficam salvos neste navegador e neste dispositivo.<br>Este painel não está conectado ao banco ou à sua conta financeira. Rendimentos, taxas e preço final da moto não estão incluídos.</div>
+</div>
+<script>
+const KEY='projetoSahara2027_download_v1';
+const initial={goal:25000,monthly:1000,balance:0,history:[],challenge:[]};
+const brl=v=>Number(v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+let data;try{data={...initial,...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch(e){data={...initial}}
+function persist(){localStorage.setItem(KEY,JSON.stringify(data));render()}
+function notice(msg){document.getElementById('notice').textContent=msg}
+function addMove(type){
+ const amount=Number(document.getElementById('amount').value);
+ if(!Number.isFinite(amount)||amount<=0){notice('Digite um valor válido maior que zero.');return}
+ if(type==='out'&&amount>data.balance){notice('A retirada não pode ser maior que o saldo guardado.');return}
+ const desc=document.getElementById('description').value.trim()||(type==='in'?'Depósito':'Retirada');
+ data.balance+=type==='in'?amount:-amount;
+ data.history.push({type,amount,desc,date:new Date().toLocaleDateString('pt-BR')});
+ document.getElementById('amount').value='';document.getElementById('description').value='';
+ notice(type==='in'?'Depósito registrado com sucesso!':'Retirada registrada.');if(window.nznNotify)window.nznNotify(type==='in'?'Depósito registrado':'Retirada registrada',(type==='in'?'+ ':'− ')+brl(amount)+' • '+desc);const reachedBefore=(data.balance-(type==='in'?amount:-amount))>=Number(data.goal||25000);if(type==='in'&&!reachedBefore&&data.balance>=Number(data.goal||25000)&&window.nznNotify)window.nznNotify('Meta financeira alcançada!','Parabéns! Você atingiu sua meta NZN FINANCE.');persist();
+}
+document.getElementById('add').onclick=()=>addMove('in');
+document.getElementById('withdraw').onclick=()=>addMove('out');
+document.getElementById('saveSettings').onclick=()=>{
+ const g=Number(document.getElementById('goal').value),m=Number(document.getElementById('monthly').value);
+ if(!Number.isFinite(g)||!Number.isFinite(m)||g<=0||m<=0){notice('Informe valores maiores que zero.');return}
+ data.goal=g;data.monthly=m;persist();notice('Planejamento atualizado!');
+};
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function render(){
+ const goal=Math.max(1,Number(data.goal)||25000),bal=Math.max(0,Number(data.balance)||0),pct=Math.min(100,bal/goal*100),left=Math.max(0,goal-bal),months=Math.ceil(left/(Number(data.monthly)||1000));
+ document.getElementById('saved').textContent=brl(bal);document.getElementById('percent').textContent=pct.toFixed(1).replace('.',',')+'%';document.getElementById('bar').style.width=pct+'%';
+ document.getElementById('remaining').textContent=left>0?'Faltam '+brl(left):'Meta alcançada!';document.getElementById('targetLabel').textContent='Meta: '+brl(goal);
+ document.getElementById('monthlyHero').textContent=brl(data.monthly);document.getElementById('months').textContent=left===0?'Concluída':months+' '+(months===1?'mês':'meses');
+ document.getElementById('dateNote').textContent=left===0?'Parabéns por alcançar seu objetivo!':'Estimativa sem rendimentos ou mudanças no valor mensal';
+ document.getElementById('statSaved').textContent=brl(bal);document.getElementById('statLeft').textContent=brl(left);document.getElementById('count').textContent=data.history.length;
+ document.getElementById('goal').value=data.goal;document.getElementById('monthly').value=data.monthly;
+ const total=data.challenge.reduce((a,b)=>a+b,0),cp=Math.min(100,total/500*100);
+ document.getElementById('challengeTotal').innerHTML=brl(total)+' <span class="muted" style="font-size:12px">de R$ 500,00</span>';
+ document.getElementById('challengePercent').textContent=cp.toFixed(0)+'%';document.getElementById('challengeBar').style.width=cp+'%';
+ document.getElementById('challengeText').textContent=total>=500?'Desafio concluído! Muito bem.':'Marque os valores que você já separou para o desafio.';
+ const grid=document.getElementById('challengeGrid');grid.innerHTML='';
+ for(let n=10;n<=500;n+=10){const b=document.createElement('button');b.textContent='R$ '+n;b.className='btn '+(data.challenge.includes(n)?'':'secondary');b.onclick=()=>{data.challenge=data.challenge.includes(n)?data.challenge.filter(x=>x!==n):[...data.challenge,n];persist()};grid.appendChild(b)}
+ const hist=[...data.history].reverse(),wrap=document.getElementById('historyWrap');
+ if(!hist.length){wrap.innerHTML='<div class="empty">Nenhuma movimentação registrada ainda.</div>'}else{
+ let table='<div style="overflow-x:auto"><table class="history"><thead><tr><th>DATA</th><th>DESCRIÇÃO</th><th>TIPO</th><th>VALOR</th></tr></thead><tbody>';
+ hist.forEach(x=>{table+=`<tr><td>${escapeHtml(x.date)}</td><td>${escapeHtml(x.desc)}</td><td>${x.type==='in'?'Depósito':(x.type==='interest'?'Juros CDI':'Retirada')}</td><td class="${(x.type==='in'||x.type==='interest')?'positive':'negative'}">${x.type==='out'?'−':'+'} ${brl(x.amount)}</td></tr>`});table+='</tbody></table></div>';wrap.innerHTML=table;
+ }
+}
+document.getElementById('resetChallenge').onclick=()=>{if(confirm('Reiniciar apenas o desafio de R$ 500?')){data.challenge=[];persist()}};
+document.getElementById('resetAll').onclick=()=>{if(confirm('Tem certeza? Isso apagará saldo, histórico e desafio salvos neste navegador.')){data={...initial,history:[],challenge:[]};persist();notice('Painel zerado.')}};
+document.getElementById('export').onclick=()=>{
+ const rows=[['Data','Descrição','Tipo','Valor'],...data.history.map(x=>[x.date,x.desc,x.type==='in'?'Depósito':(x.type==='interest'?'Juros CDI':'Retirada'),x.amount])];
+ const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(';')).join('\n');
+ const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}));a.download='historico-projeto-sahara.csv';a.click();URL.revokeObjectURL(a.href);
+};
+
+window.addCDIInterest=(interest,rate)=>{
+ data.balance=Number(data.balance||0)+interest;
+ data.history.push({type:'interest',amount:interest,desc:'Juros positivos CDI ('+rate.toFixed(2)+'% a.a.)',date:new Date().toLocaleDateString('pt-BR')});
+ if(window.nznNotify)window.nznNotify('Juros CDI adicionados','+'+brl(interest)+' foram somados ao seu saldo principal.');
+ persist();
+};
+render();
+</script>
+
+<script id="bank-demo-script">
+(()=>{
+ const choices=[...document.querySelectorAll('.bank-option')];
+ const consent=document.getElementById('bankConsent');
+ const connect=document.getElementById('connectBank');
+ const status=document.getElementById('bankStatus');
+ let selected='';
+ choices.forEach(btn=>btn.addEventListener('click',()=>{
+   selected=btn.dataset.bank;
+   choices.forEach(x=>x.setAttribute('aria-pressed',String(x===btn)));
+   status.textContent='Banco selecionado: '+selected+'. Confirme que entendeu a demonstração.';
+   connect.disabled=!(consent.checked&&selected);
+ }));
+ consent.addEventListener('change',()=>{connect.disabled=!(consent.checked&&selected)});
+ connect.addEventListener('click',()=>{
+   if(!selected||!consent.checked)return;
+   status.textContent='Demonstração concluída: '+selected+' selecionado. Ainda não existe conexão bancária real neste arquivo.';
+   status.style.borderColor='#c5fa83';
+ });
+})();
+</script>
+
+<script id="cdi-interest-script">
+(()=>{
+ const rateInput=document.getElementById('cdiRate');
+ const estimate=document.getElementById('cdiEstimate');
+ const note=document.getElementById('cdiNotice');
+ const apply=document.getElementById('applyCDI');
+ if(!rateInput||!estimate||!apply)return;
+ const fmt=v=>Number(v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+ const calc=()=>{
+   const rate=Number(rateInput.value);
+   const bal=Number((document.getElementById('saved')?.textContent||'').replace(/[^\d,.-]/g,'').replace(/\./g,'').replace(',','.'))||0;
+   if(!Number.isFinite(rate)||rate<0||rate>100){estimate.textContent='Taxa inválida';return 0}
+   const monthly=Math.pow(1+rate/100,1/12)-1;
+   const interest=bal*monthly;
+   estimate.textContent=fmt(interest);
+   return interest;
+ };
+ rateInput.addEventListener('input',calc);
+ apply.addEventListener('click',()=>{
+   const interest=calc();
+   if(!Number.isFinite(interest)||interest<=0){note.textContent='Não há rendimento positivo para somar. Confira o saldo e a taxa.';return}
+   if(typeof window.addCDIInterest==='function'){
+     window.addCDIInterest(interest,Number(rateInput.value));
+     note.textContent='Rendimento CDI somado ao saldo principal.';
+   }else{
+     note.textContent='Não foi possível atualizar o saldo. Recarregue o painel.';
+   }
+ });
+ calc();
+})();
+</script>
+
+<script id="home-dashboard-sync">
+(()=>{
+ const originalRender=window.render;
+ const update=()=>{
+  const saved=document.getElementById('saved');
+  const target=document.getElementById('targetLabel');
+  const percent=document.getElementById('percent');
+  const remaining=document.getElementById('remaining');
+  if(saved)document.getElementById('appMainBalance').textContent=saved.textContent;
+  if(target)document.getElementById('appGoalChip').textContent=target.textContent.replace('Meta: ','');
+  if(percent)document.getElementById('appProgress').textContent=percent.textContent;
+  if(remaining)document.getElementById('appRemaining').textContent=remaining.textContent.replace('Faltam ','');
+ };
+ const observer=new MutationObserver(update);
+ document.addEventListener('DOMContentLoaded',()=>{
+  ['saved','targetLabel','percent','remaining'].forEach(id=>{const el=document.getElementById(id);if(el)observer.observe(el,{childList:true,characterData:true,subtree:true})});
+  update();
+ });
+ setTimeout(update,300);
+})();
+</script>
+
+<script id="nzn-notifications">
+(()=>{
+ const button=document.getElementById('enableNotifications');
+ const status=document.getElementById('notificationStatus');
+ const update=()=>{
+   if(!('Notification' in window)){status.textContent='Este navegador não oferece suporte a notificações.';button.disabled=true;return}
+   status.textContent=Notification.permission==='granted'?'Notificações ativadas neste navegador.':Notification.permission==='denied'?'Permissão bloqueada. Altere nas configurações do navegador.':'Notificações ainda não ativadas neste navegador.';
+ };
+ window.nznNotify=(title,body)=>{
+   if(!('Notification' in window)||Notification.permission!=='granted')return;
+   try{
+     if(navigator.serviceWorker&&navigator.serviceWorker.controller){
+       navigator.serviceWorker.ready.then(reg=>reg.showNotification(title,{body,icon:'nzn-icon.svg',badge:'nzn-icon.svg',tag:'nzn-'+Date.now()})).catch(()=>new Notification(title,{body,icon:'nzn-icon.svg'}));
+     }else{new Notification(title,{body,icon:'nzn-icon.svg'})}
+   }catch(e){}
+ };
+ button.addEventListener('click',async()=>{
+   if(!('Notification' in window)){update();return}
+   try{
+     const permission=await Notification.requestPermission();
+     update();
+     if(permission==='granted')window.nznNotify('NZN FINANCE ativado','Você receberá avisos de movimentações enquanto usar o painel.');
+   }catch(e){status.textContent='Não foi possível solicitar permissão neste navegador.'}
+ });
+ if('serviceWorker' in navigator && (location.protocol==='https:'||location.hostname==='localhost')){
+   window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+ }
+ update();
+})();
+</script>
+
+</body>
+</html>
