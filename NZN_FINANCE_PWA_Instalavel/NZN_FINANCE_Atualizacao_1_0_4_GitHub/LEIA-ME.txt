@@ -1,0 +1,26 @@
+NZN FINANCE — Atualização 1.0.4
+
+O QUE MUDA
+- Versão do aplicativo atualizada para 1.0.4.
+- Novos navegadores começam com saldo R$ 0,00, juros/CDI R$ 0,00 e histórico vazio.
+- Os dados já salvos no mesmo navegador são preservados: a chave de armazenamento local foi mantida.
+- Cache do aplicativo atualizado para que o navegador reconheça os novos arquivos.
+
+IMPORTANTE SOBRE OS DADOS
+- Os dados ficam armazenados localmente no navegador e dispositivo.
+- Um navegador sem dados anteriores inicia zerado.
+- Não use “Limpar dados do site” para atualizar, pois isso pode apagar dados locais.
+- Este aplicativo ainda não possui contas individuais nem sincronização entre dispositivos.
+
+COMO PUBLICAR PELO GITHUB
+1. Abra o repositório GitHub: nenezeraoyt-droid/NZN-FINANCE.
+2. Entre na pasta NZN_FINANCE_PWA_Instalavel.
+3. Clique em Add file > Upload files.
+4. Extraia este ZIP e envie os cinco arquivos para o mesmo diretório: index.html, sw.js, manifest.webmanifest, nzn-icon.svg e LEIA-ME.txt.
+5. Confirme o envio com Commit changes na branch main.
+6. Como o Netlify já está conectado ao GitHub, ele deverá iniciar um deploy automaticamente.
+7. Aguarde o deploy ficar Published/Completed no Netlify.
+8. Abra o aplicativo e clique em “Verificar atualizações”. Se necessário, feche e abra o app novamente.
+
+OBSERVAÇÃO
+O botão “Verificar atualizações” instala uma versão que já foi publicada. O GitHub recebe os arquivos e o Netlify faz a publicação automática; o botão do app não envia arquivos ao GitHub nem publica mudanças por conta própria.
