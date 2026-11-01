@@ -88,11 +88,33 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
 .nzn-menu #menuFeedback{padding:9px 11px;color:#c0e2ce;font-size:11px;border-top:1px solid #286447;margin-top:5px}
 </style>
 
+
+<style id="nzn-profile-photo-style">
+.profile-photo-button{position:relative;width:48px;height:48px;border:0;padding:0;border-radius:50%;overflow:visible;background:transparent;cursor:pointer;flex:0 0 48px}
+.profile-photo-button img,.profile-photo-button #profilePhotoFallback{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;object-fit:cover;background:#d4ff9d;color:#10472b;font-weight:900;font-size:20px;border:2px solid #e9ffe6}
+.profile-photo-button img[hidden]{display:none}
+.profile-photo-button #profilePhotoFallback[hidden]{display:none}
+.profile-photo-edit{position:absolute;right:-2px;bottom:-2px;width:19px;height:19px;border-radius:50%;display:grid;place-items:center;background:#d4ff9d;border:2px solid #0b5c38;font-size:10px;line-height:1}
+.profile-photo-button:focus-visible{outline:3px solid #c5fa83;outline-offset:3px}
+.profile-photo-menu{position:fixed;z-index:5000;min-width:210px;padding:8px;background:#082b1d;border:1px solid #39815e;border-radius:14px;box-shadow:0 14px 36px #0009}
+.profile-photo-menu[hidden]{display:none}
+.profile-photo-menu button{display:block;width:100%;text-align:left;padding:11px;border:0;border-radius:9px;background:transparent;color:#f2fff6;font:600 13px inherit;cursor:pointer}
+.profile-photo-menu button:hover{background:#176747}
+</style>
+
 </head>
 <body>
 <div class="wrap">
 <div class="app-topbar">
- <div class="app-brand"><div class="app-avatar">S</div><div><div style="font-size:10px;opacity:.8;letter-spacing:1.5px">SEU PAINEL FINANCEIRO</div><div>NZN FINANCE</div></div></div>
+ <div class="app-brand">
+  <button class="profile-photo-button" type="button" id="profilePhotoButton" aria-label="Adicionar ou trocar foto de perfil" title="Foto de perfil">
+    <img id="profilePhotoImage" alt="Foto de perfil" hidden>
+    <span id="profilePhotoFallback">S</span>
+    <span class="profile-photo-edit" aria-hidden="true">📷</span>
+  </button>
+  <input id="profilePhotoInput" type="file" accept="image/*" hidden>
+  <div><div style="font-size:10px;opacity:.8;letter-spacing:1.5px">SEU PAINEL FINANCEIRO</div><div>NZN FINANCE</div></div>
+ </div>
  <div class="app-top-actions" aria-label="Atalhos">
    <button class="top-action" type="button" id="privacyShortcut" aria-label="Privacidade" title="Privacidade">◉</button>
    <button class="top-action" type="button" id="helpShortcut" aria-label="Ajuda" title="Ajuda">?</button>
@@ -102,7 +124,7 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
    <button type="button" id="menuCheckUpdate">↻ Verificar atualização</button>
    <button type="button" id="menuNotifications">♧ Notificações</button>
    <button type="button" id="menuHelp">? Ajuda</button>
-   <div id="menuFeedback" role="status" aria-live="polite">NZN FINANCE • Versão 1.0.5</div>
+   <div id="menuFeedback" role="status" aria-live="polite">NZN FINANCE • Versão 1.0.6</div>
   </nav>
 </div>
 
@@ -111,7 +133,7 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
   <div style="flex:1;min-width:190px">
    <div class="tag">ATUALIZAÇÃO NZN FINANCE</div>
    <strong style="display:block;margin:6px 0" id="nznUpdateTitle">Verificador de atualizações</strong>
-   <div class="muted" id="nznUpdateMessage">Versão instalada: 1.0.5. Clique em verificar para procurar novidades.</div>
+   <div class="muted" id="nznUpdateMessage">Versão instalada: 1.0.6. Clique em verificar para procurar novidades.</div>
   </div>
   <div style="display:flex;gap:8px;flex-wrap:wrap">
    <button class="btn" id="nznCheckUpdates" type="button">Verificar atualizações</button>
@@ -432,7 +454,7 @@ render();
 
 <script id="nzn-auto-updater">
 (()=>{
- const APP_VERSION='1.0.5';
+ const APP_VERSION='1.0.6';
  const panel=document.getElementById('nznUpdatePanel');
  const checkButton=document.getElementById('nznCheckUpdates');
  const updateButton=document.getElementById('nznUpdateNow');
@@ -511,6 +533,71 @@ render();
  document.getElementById('privacyShortcut')?.addEventListener('click',()=>{
   open();
   if(feedback)feedback.textContent='Seus dados ficam armazenados neste navegador e dispositivo.';
+ });
+})();
+</script>
+
+
+<script id="nzn-profile-photo-actions">
+(()=> {
+ const KEY='nzn_finance_profile_photo_v1';
+ const btn=document.getElementById('profilePhotoButton');
+ const input=document.getElementById('profilePhotoInput');
+ const img=document.getElementById('profilePhotoImage');
+ const fallback=document.getElementById('profilePhotoFallback');
+ if(!btn||!input||!img||!fallback)return;
+
+ const menu=document.createElement('div');
+ menu.className='profile-photo-menu'; menu.hidden=true;
+ menu.innerHTML='<button type="button" data-action="choose">📷 Escolher ou trocar foto</button><button type="button" data-action="remove">🗑️ Remover foto</button>';
+ document.body.appendChild(menu);
+
+ const close=()=>menu.hidden=true;
+ const showMenu=()=>{
+   const r=btn.getBoundingClientRect();
+   menu.style.left=Math.max(8,Math.min(r.left,window.innerWidth-225))+'px';
+   menu.style.top=Math.min(window.innerHeight-120,r.bottom+8)+'px';
+   menu.hidden=false;
+ };
+ const setPhoto=(data)=>{
+   if(data){img.src=data;img.hidden=false;fallback.hidden=true;}
+   else {img.removeAttribute('src');img.hidden=true;fallback.hidden=false;}
+ };
+ try{setPhoto(localStorage.getItem(KEY));}catch(e){}
+
+ btn.addEventListener('click',e=>{e.stopPropagation();menu.hidden?showMenu():close();});
+ menu.addEventListener('click',e=>{
+   e.stopPropagation();
+   const action=e.target.closest('button')?.dataset.action;
+   if(action==='choose'){close();input.click();}
+   if(action==='remove'){try{localStorage.removeItem(KEY)}catch(e){};setPhoto(null);close();}
+ });
+ document.addEventListener('click',close);
+ window.addEventListener('resize',close);
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+
+ input.addEventListener('change',()=>{
+   const file=input.files&&input.files[0];
+   if(!file)return;
+   if(!file.type.startsWith('image/')){input.value='';return;}
+   const reader=new FileReader();
+   reader.onload=()=> {
+     const source=new Image();
+     source.onload=()=>{
+       const size=320, canvas=document.createElement('canvas');
+       canvas.width=size;canvas.height=size;
+       const ctx=canvas.getContext('2d');
+       const scale=Math.max(size/source.width,size/source.height);
+       const w=source.width*scale,h=source.height*scale;
+       ctx.drawImage(source,(size-w)/2,(size-h)/2,w,h);
+       const data=canvas.toDataURL('image/jpeg',0.82);
+       try{localStorage.setItem(KEY,data);setPhoto(data);}
+       catch(e){alert('Não foi possível salvar a foto neste navegador. Tente uma imagem menor.');}
+       input.value='';
+     };
+     source.src=reader.result;
+   };
+   reader.readAsDataURL(file);
  });
 })();
 </script>
