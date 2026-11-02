@@ -1,0 +1,21 @@
+{
+  "id": "./",
+  "name": "NZN FINANCE",
+  "short_name": "NZN FINANCE",
+  "description": "Seu painel financeiro pessoal",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#061b13",
+  "theme_color": "#087a48",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "nzn-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
