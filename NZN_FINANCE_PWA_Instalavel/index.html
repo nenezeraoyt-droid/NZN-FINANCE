@@ -48,7 +48,7 @@ body{background:#061b13!important;color:#f4fff7!important}
 .account-overview{background:#07110d;border:1px solid #174c34;border-radius:20px;padding:22px;margin-bottom:15px}
 .account-overview .balance-label{font-size:14px;color:#c0d9ca;font-weight:650}
 .account-overview .balance-value{font-size:30px;font-weight:850;margin-top:8px}
-.account-chip{display:inline-flex;align-items:center;gap:8px;margin-top:17px;padding:9px 13px;border-radius:30px;background:#173b2a;color:#dfffe9;font-size:12px}.account-summary{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}.account-summary-item{background:#0d1b14;border:1px solid #24543c;border-radius:14px;padding:12px}.account-summary-item .muted{font-size:10px}.account-summary-item strong{display:block;font-size:18px;margin-top:5px}.account-summary-item p{margin:4px 0 0;color:var(--muted);font-size:10px}@media(max-width:480px){.account-summary{grid-template-columns:1fr}}
+.account-chip{display:inline-flex;align-items:center;gap:8px;margin-top:17px;padding:9px 13px;border-radius:30px;background:#173b2a;color:#dfffe9;font-size:12px}
 .shortcut-strip{display:flex;gap:18px;overflow-x:auto;padding:14px 3px 20px;scrollbar-width:thin}
 .shortcut{flex:0 0 92px;text-align:center;color:#f0fff5;font-size:12px;font-weight:650}
 .shortcut button{width:78px;height:78px;border:0;border-radius:50%;background:#174b32;color:#d9ff9d;font-size:27px;display:grid;place-items:center;margin:0 auto 9px;cursor:pointer;box-shadow:0 5px 18px #001b1044}
@@ -88,87 +88,11 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
 .nzn-menu #menuFeedback{padding:9px 11px;color:#c0e2ce;font-size:11px;border-top:1px solid #286447;margin-top:5px}
 </style>
 
-
-<style id="nzn-profile-photo-style">
-.profile-photo-button{position:relative;width:48px;height:48px;border:0;padding:0;border-radius:50%;overflow:visible;background:transparent;cursor:pointer;flex:0 0 48px}
-.profile-photo-button img,.profile-photo-button #profilePhotoFallback{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;object-fit:cover;background:#d4ff9d;color:#10472b;font-weight:900;font-size:20px;border:2px solid #e9ffe6}
-.profile-photo-button img[hidden]{display:none}
-.profile-photo-button #profilePhotoFallback[hidden]{display:none}
-.profile-photo-edit{position:absolute;right:-2px;bottom:-2px;width:19px;height:19px;border-radius:50%;display:grid;place-items:center;background:#d4ff9d;border:2px solid #0b5c38;font-size:10px;line-height:1}
-.profile-photo-button:focus-visible{outline:3px solid #c5fa83;outline-offset:3px}
-.profile-photo-menu{position:fixed;z-index:5000;min-width:210px;padding:8px;background:#082b1d;border:1px solid #39815e;border-radius:14px;box-shadow:0 14px 36px #0009}
-.profile-photo-menu[hidden]{display:none}
-.profile-photo-menu button{display:block;width:100%;text-align:left;padding:11px;border:0;border-radius:9px;background:transparent;color:#f2fff6;font:600 13px inherit;cursor:pointer}
-.profile-photo-menu button:hover{background:#176747}
-</style>
-
-<style id="nzn-profile-name-style">
-.profile-brand-text{min-width:0}
-#profileDisplayName{font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:210px}
-.profile-editor-backdrop{position:fixed;inset:0;z-index:6000;background:#0008;display:grid;place-items:center;padding:18px}
-.profile-editor-backdrop[hidden]{display:none}
-.profile-editor-card{width:min(100%,390px);background:#073222;color:#f4fff6;border:1px solid #39815e;border-radius:18px;box-shadow:0 20px 50px #000a;padding:20px}
-.profile-editor-card h2{margin:0 0 8px;font-size:20px}
-.profile-editor-card p{margin:0 0 16px;opacity:.8;font-size:13px}
-.profile-editor-card label{display:block;font-size:12px;font-weight:700;margin-bottom:7px}
-.profile-editor-card input{width:100%;box-sizing:border-box;border:1px solid #4b936f;border-radius:11px;background:#0b4a32;color:#fff;padding:13px;font:inherit;outline:none}
-.profile-editor-card input:focus{border-color:#c5fa83;box-shadow:0 0 0 3px #c5fa8333}
-.profile-editor-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:16px}
-.profile-editor-actions button{border:0;border-radius:10px;padding:11px 14px;font:700 13px inherit;cursor:pointer}
-.profile-cancel{background:#164d38;color:#fff}
-.profile-save{background:#c5fa83;color:#123b28}
-</style>
-
-<style id="nzn-investments-style">
-.invest-launch{position:fixed;right:14px;bottom:82px;z-index:2000;border:0;border-radius:50%;width:54px;height:54px;background:#c5fa83;color:#123b28;font-size:22px;box-shadow:0 8px 20px #0006;cursor:pointer}
-#investmentsPage{position:fixed;inset:0;z-index:3000;overflow:auto;background:#062b1e;color:#fff;padding:20px 14px 90px}
-#investmentsPage[hidden]{display:none!important}.invest-head{display:flex;justify-content:space-between;align-items:center}
-.invest-close{border:0;border-radius:10px;padding:9px 12px;background:#174a37;color:#fff;font-weight:800}
-.invest-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:14px 0}.invest-card{border:1px solid #2f7555;border-radius:14px;padding:11px;background:#083524}.invest-card small{display:block;opacity:.75;font-size:10px}.invest-card strong{display:block;margin-top:6px}
-.invest-add{width:100%;border:0;border-radius:13px;padding:14px;background:#c5fa83;color:#123b28;font-weight:900;margin-bottom:14px}.invest-list{display:grid;gap:10px}.invest-item{display:flex;justify-content:space-between;gap:10px;border:1px solid #2c7554;border-radius:14px;padding:12px;background:#083524}.invest-type{font-size:10px;font-weight:900;opacity:.7}.invest-name{font-weight:800;margin:3px 0}.invest-meta,.invest-gain{font-size:11px;opacity:.75}.invest-gain{color:#c5fa83}.invest-values{text-align:right}.invest-delete{margin-top:7px;border:0;border-radius:8px;padding:7px 9px;background:#174a37;color:#fff}.invest-empty{text-align:center;padding:25px;opacity:.75;border:1px dashed #39765a;border-radius:14px}
-.invest-modal{position:fixed;inset:0;z-index:4000;background:#0009;display:grid;place-items:center;padding:16px}.invest-modal[hidden]{display:none}.invest-modal-card{width:min(100%,420px);background:#073222;border:1px solid #39815e;border-radius:18px;padding:20px}.invest-modal-card h2{margin:0 0 12px}.invest-modal-card label{display:block;font-size:12px;font-weight:800;margin:9px 0 5px}.invest-modal-card input,.invest-modal-card select{width:100%;box-sizing:border-box;padding:12px;border-radius:10px;border:1px solid #4b936f;background:#0b4a32;color:#fff}.invest-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:16px}.invest-actions button{border:0;border-radius:10px;padding:11px 14px;font-weight:800}.cancel{background:#164d38;color:#fff}.save{background:#c5fa83;color:#123b28}
-@media(max-width:500px){.invest-summary{grid-template-columns:1fr}.invest-card{display:flex;justify-content:space-between}}
-</style>
-
-
-<style id="nzn-charts-style">
-.chart-launch{position:fixed;right:14px;bottom:146px;z-index:2000;border:0;border-radius:50%;width:54px;height:54px;background:#c5fa83;color:#123b28;font-size:22px;box-shadow:0 8px 20px #0006;cursor:pointer}
-#chartsPage{position:fixed;inset:0;z-index:3100;overflow:auto;background:#062b1e;color:#fff;padding:20px 14px 90px}
-#chartsPage[hidden]{display:none!important}.chart-head{display:flex;justify-content:space-between;align-items:center}
-.chart-close{border:0;border-radius:10px;padding:9px 12px;background:#174a37;color:#fff;font-weight:800}
-.chart-tabs{display:flex;gap:8px;margin:14px 0;flex-wrap:wrap}.chart-tab{border:1px solid #3d8562;background:#0a3d2b;color:#fff;border-radius:10px;padding:9px 11px;font-weight:800;font-size:12px}.chart-tab.active{background:#c5fa83;color:#123b28}
-.chart-box{background:#083524;border:1px solid #2f7555;border-radius:16px;padding:12px;margin-bottom:12px}.chart-box h3{margin:0 0 10px;font-size:14px}
-.chart-canvas{width:100%;height:250px;display:block}.chart-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.chart-stat{background:#083524;border:1px solid #2f7555;border-radius:12px;padding:10px}.chart-stat small{display:block;opacity:.72;font-size:10px}.chart-stat strong{display:block;margin-top:5px}
-.chart-note{font-size:11px;opacity:.65;margin-top:8px}
-</style>
-
-
-<style id="nzn-backup-style">
-.backup-launch{position:fixed;right:14px;bottom:210px;z-index:2000;border:0;border-radius:50%;width:54px;height:54px;background:#c5fa83;color:#123b28;font-size:21px;box-shadow:0 8px 20px #0006;cursor:pointer}
-#backupPage{position:fixed;inset:0;z-index:3200;overflow:auto;background:#062b1e;color:#fff;padding:20px 14px 90px}
-#backupPage[hidden]{display:none!important}.backup-head{display:flex;justify-content:space-between;align-items:center}.backup-close{border:0;border-radius:10px;padding:9px 12px;background:#174a37;color:#fff;font-weight:800}
-.backup-card{background:#083524;border:1px solid #2f7555;border-radius:16px;padding:16px;margin-top:14px}.backup-card h3{margin:0 0 7px}.backup-card p{font-size:12px;opacity:.78;line-height:1.45}
-.backup-action{width:100%;border:0;border-radius:12px;padding:13px;margin-top:10px;font-weight:900;font-size:14px;cursor:pointer}.backup-export{background:#c5fa83;color:#123b28}.backup-import{background:#164d38;color:#fff;border:1px solid #4b936f}
-.backup-status{margin-top:14px;padding:12px;border-radius:11px;background:#0a3d2b;border:1px solid #2f7555;font-size:12px;display:none}.backup-status.show{display:block}
-.backup-confirm{position:fixed;inset:0;z-index:5000;background:#0009;display:grid;place-items:center;padding:16px}.backup-confirm[hidden]{display:none}.backup-confirm-card{width:min(100%,410px);background:#073222;border:1px solid #39815e;border-radius:18px;padding:20px}.backup-confirm-card h2{margin:0 0 8px}.backup-confirm-card p{font-size:13px;opacity:.82;line-height:1.45}.backup-confirm-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:16px}.backup-confirm-actions button{border:0;border-radius:10px;padding:11px 14px;font-weight:800}.backup-cancel{background:#164d38;color:#fff}.backup-yes{background:#c5fa83;color:#123b28}
-</style>
-
 </head>
 <body>
 <div class="wrap">
 <div class="app-topbar">
- <div class="app-brand">
-  <button class="profile-photo-button" type="button" id="profilePhotoButton" aria-label="Adicionar ou trocar foto de perfil" title="Foto de perfil">
-    <img id="profilePhotoImage" alt="Foto de perfil" hidden>
-    <span id="profilePhotoFallback">S</span>
-    <span class="profile-photo-edit" aria-hidden="true">📷</span>
-  </button>
-  <input id="profilePhotoInput" type="file" accept="image/*" hidden>
-  <div class="profile-brand-text">
-    <div style="font-size:10px;opacity:.8;letter-spacing:1.5px">SEU PAINEL FINANCEIRO</div>
-    <div id="profileDisplayName">NZN FINANCE</div>
-  </div>
- </div>
+ <div class="app-brand"><div class="app-avatar">S</div><div><div style="font-size:10px;opacity:.8;letter-spacing:1.5px">SEU PAINEL FINANCEIRO</div><div>NZN FINANCE</div></div></div>
  <div class="app-top-actions" aria-label="Atalhos">
    <button class="top-action" type="button" id="privacyShortcut" aria-label="Privacidade" title="Privacidade">◉</button>
    <button class="top-action" type="button" id="helpShortcut" aria-label="Ajuda" title="Ajuda">?</button>
@@ -178,7 +102,7 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
    <button type="button" id="menuCheckUpdate">↻ Verificar atualização</button>
    <button type="button" id="menuNotifications">♧ Notificações</button>
    <button type="button" id="menuHelp">? Ajuda</button>
-   <div id="menuFeedback" role="status" aria-live="polite">NZN FINANCE • Versão 1.0.10</div>
+   <div id="menuFeedback" role="status" aria-live="polite">NZN FINANCE • Versão 1.0.5</div>
   </nav>
 </div>
 
@@ -187,7 +111,7 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
   <div style="flex:1;min-width:190px">
    <div class="tag">ATUALIZAÇÃO NZN FINANCE</div>
    <strong style="display:block;margin:6px 0" id="nznUpdateTitle">Verificador de atualizações</strong>
-   <div class="muted" id="nznUpdateMessage">Versão instalada: 1.0.10. Clique em verificar para procurar novidades.</div>
+   <div class="muted" id="nznUpdateMessage">Versão instalada: 1.0.5. Clique em verificar para procurar novidades.</div>
   </div>
   <div style="display:flex;gap:8px;flex-wrap:wrap">
    <button class="btn" id="nznCheckUpdates" type="button">Verificar atualizações</button>
@@ -214,10 +138,6 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
   <div class="balance-label">Saldo principal</div>
   <div class="balance-value" id="saved">R$ 0,00</div>
   <div class="account-chip">🏍️ Meta financeira <strong id="appGoalChip">R$ 25.000,00</strong></div>
-  <div class="account-summary">
-   <div class="account-summary-item"><div class="muted">TOTAL GUARDADO</div><strong id="statSaved">R$ 0,00</strong><p>Saldo registrado neste painel</p></div>
-   <div class="account-summary-item"><div class="muted">MOVIMENTAÇÕES</div><strong id="count">0</strong><p>Depósitos e retiradas</p></div>
-  </div>
   <span id="appMainBalance" hidden>R$ 0,00</span>
  </div>
  <div class="panel side">
@@ -242,7 +162,9 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
 <header class="top"><div class="brand"><div class="mark">S</div><div><div class="eyebrow">PLANO FINANCEIRO • 2027</div><h1>NZN FINANCE</h1></div></div><div class="status">● Controle pessoal de economia</div></header>
 
 <section class="grid">
+ <div class="panel stat"><div class="muted">TOTAL GUARDADO</div><strong id="statSaved">R$ 0,00</strong><p>Saldo registrado neste painel</p></div>
  <div class="panel stat"><div class="muted">FALTA PARA A META</div><strong id="statLeft">R$ 25.000,00</strong><p>Quanto falta para completar</p></div>
+ <div class="panel stat"><div class="muted">MOVIMENTAÇÕES</div><strong id="count">0</strong><p>Depósitos e retiradas</p></div>
 </section>
 <div class="section-title"><h3>Movimentar sua economia</h3><span>Registre cada depósito ou retirada</span></div>
 <section class="lower">
@@ -510,7 +432,7 @@ render();
 
 <script id="nzn-auto-updater">
 (()=>{
- const APP_VERSION='1.0.10';
+ const APP_VERSION='1.0.5';
  const panel=document.getElementById('nznUpdatePanel');
  const checkButton=document.getElementById('nznCheckUpdates');
  const updateButton=document.getElementById('nznUpdateNow');
@@ -590,294 +512,6 @@ render();
   open();
   if(feedback)feedback.textContent='Seus dados ficam armazenados neste navegador e dispositivo.';
  });
-})();
-</script>
-
-
-<script id="nzn-profile-photo-actions">
-(()=> {
- const KEY='nzn_finance_profile_photo_v1';
- const btn=document.getElementById('profilePhotoButton');
- const input=document.getElementById('profilePhotoInput');
- const img=document.getElementById('profilePhotoImage');
- const fallback=document.getElementById('profilePhotoFallback');
- if(!btn||!input||!img||!fallback)return;
-
- const menu=document.createElement('div');
- menu.className='profile-photo-menu'; menu.hidden=true;
- menu.innerHTML='<button type="button" data-action="choose">📷 Escolher ou trocar foto</button><button type="button" data-action="remove">🗑️ Remover foto</button>';
- document.body.appendChild(menu);
-
- const close=()=>menu.hidden=true;
- const showMenu=()=>{
-   const r=btn.getBoundingClientRect();
-   menu.style.left=Math.max(8,Math.min(r.left,window.innerWidth-225))+'px';
-   menu.style.top=Math.min(window.innerHeight-120,r.bottom+8)+'px';
-   menu.hidden=false;
- };
- const setPhoto=(data)=>{
-   if(data){img.src=data;img.hidden=false;fallback.hidden=true;}
-   else {img.removeAttribute('src');img.hidden=true;fallback.hidden=false;}
- };
- try{setPhoto(localStorage.getItem(KEY));}catch(e){}
-
- btn.addEventListener('click',e=>{e.stopPropagation();menu.hidden?showMenu():close();});
- menu.addEventListener('click',e=>{
-   e.stopPropagation();
-   const action=e.target.closest('button')?.dataset.action;
-   if(action==='choose'){close();input.click();}
-   if(action==='remove'){try{localStorage.removeItem(KEY)}catch(e){};setPhoto(null);close();}
- });
- document.addEventListener('click',close);
- window.addEventListener('resize',close);
- document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
-
- input.addEventListener('change',()=>{
-   const file=input.files&&input.files[0];
-   if(!file)return;
-   if(!file.type.startsWith('image/')){input.value='';return;}
-   const reader=new FileReader();
-   reader.onload=()=> {
-     const source=new Image();
-     source.onload=()=>{
-       const size=320, canvas=document.createElement('canvas');
-       canvas.width=size;canvas.height=size;
-       const ctx=canvas.getContext('2d');
-       const scale=Math.max(size/source.width,size/source.height);
-       const w=source.width*scale,h=source.height*scale;
-       ctx.drawImage(source,(size-w)/2,(size-h)/2,w,h);
-       const data=canvas.toDataURL('image/jpeg',0.82);
-       try{localStorage.setItem(KEY,data);setPhoto(data);}
-       catch(e){alert('Não foi possível salvar a foto neste navegador. Tente uma imagem menor.');}
-       input.value='';
-     };
-     source.src=reader.result;
-   };
-   reader.readAsDataURL(file);
- });
-})();
-</script>
-
-<script id="nzn-profile-name-actions">
-(()=> {
- const KEY='nzn_finance_profile_name_v1';
- const display=document.getElementById('profileDisplayName');
- const photoBtn=document.getElementById('profilePhotoButton');
- if(!display || !photoBtn) return;
-
- const modal=document.createElement('div');
- modal.className='profile-editor-backdrop'; modal.hidden=true;
- modal.innerHTML=`<div class="profile-editor-card" role="dialog" aria-modal="true" aria-labelledby="profileEditorTitle">
-   <h2 id="profileEditorTitle">Editar perfil</h2>
-   <p>Escolha como seu nome aparecerá no NZN FINANCE.</p>
-   <label for="profileNameInput">Nome do perfil</label>
-   <input id="profileNameInput" maxlength="28" autocomplete="name" placeholder="Digite seu nome">
-   <div class="profile-editor-actions">
-     <button type="button" class="profile-cancel" id="profileCancel">Cancelar</button>
-     <button type="button" class="profile-save" id="profileSave">Salvar</button>
-   </div>
- </div>`;
- document.body.appendChild(modal);
-
- const input=modal.querySelector('#profileNameInput');
- const open=()=>{
-   input.value=localStorage.getItem(KEY)||display.textContent.trim()||'NZN FINANCE';
-   modal.hidden=false;
-   setTimeout(()=>{input.focus();input.select();},0);
- };
- const close=()=>modal.hidden=true;
- const save=()=>{
-   const value=input.value.trim().replace(/\s+/g,' ');
-   const finalName=value || 'NZN FINANCE';
-   try{localStorage.setItem(KEY,finalName);}catch(e){}
-   display.textContent=finalName;
-   close();
- };
-
- try{
-   const saved=localStorage.getItem(KEY);
-   if(saved) display.textContent=saved;
- }catch(e){}
-
- // Clique no nome abre o editor; a foto continua com o menu de foto existente.
- display.style.cursor='pointer';
- display.title='Editar nome do perfil';
- display.addEventListener('click',open);
- display.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
- display.tabIndex=0;
- modal.querySelector('#profileCancel').addEventListener('click',close);
- modal.querySelector('#profileSave').addEventListener('click',save);
- input.addEventListener('keydown',e=>{if(e.key==='Enter')save(); if(e.key==='Escape')close();});
- modal.addEventListener('click',e=>{if(e.target===modal)close();});
-})();
-</script>
-
-<button id="openInvestments" class="invest-launch" type="button" title="Investimentos">💰</button>
-<section id="investmentsPage" hidden>
- <div class="invest-head"><div><h2 style="margin:0">💰 Investimentos</h2><div style="font-size:12px;opacity:.75">Ações, CDI e CDB</div></div><button id="closeInvestments" class="invest-close">Voltar</button></div>
- <div class="invest-summary">
-  <div class="invest-card"><small>Total investido</small><strong id="investTotal">R$ 0,00</strong></div>
-  <div class="invest-card"><small>Rendimento</small><strong id="investGain">R$ 0,00</strong></div>
-  <div class="invest-card"><small>Total atual</small><strong id="investCurrent">R$ 0,00</strong></div>
- </div>
- <button id="addInvestment" class="invest-add">＋ Adicionar investimento</button>
- <div id="investList" class="invest-list"></div>
-</section>
-<div id="investmentModal" class="invest-modal" hidden><div class="invest-modal-card">
- <h2>Adicionar investimento</h2>
- <label>Tipo</label><select id="invType"><option>Ações</option><option>CDI</option><option>CDB</option></select>
- <label>Nome / descrição</label><input id="invName" maxlength="40" placeholder="Ex.: PETR4 ou CDB Banco X">
- <label>Valor investido (R$)</label><input id="invAmount" type="number" min="0" step="0.01">
- <label>Rendimento atual (%) — opcional</label><input id="invRate" type="number" step="0.01" placeholder="Ex.: 5,25">
- <div class="invest-actions"><button id="invCancel" class="cancel">Cancelar</button><button id="invSave" class="save">Salvar</button></div>
-</div></div>
-
-<script id="nzn-investments-actions">
-(()=> {
- const KEY='nzn_finance_investments_v1', $=id=>document.getElementById(id);
- const fmt=v=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(Number(v)||0);
- let data=[];try{data=JSON.parse(localStorage.getItem(KEY)||'[]');if(!Array.isArray(data))data=[]}catch(e){}
- const save=()=>localStorage.setItem(KEY,JSON.stringify(data));
- const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- const render=()=>{
-  const total=data.reduce((s,x)=>s+(+x.amount||0),0),gain=data.reduce((s,x)=>s+(+x.amount||0)*(+x.rate||0)/100,0);
-  $('investTotal').textContent=fmt(total);$('investGain').textContent=fmt(gain);$('investCurrent').textContent=fmt(total+gain);
-  $('investList').innerHTML=data.length?data.map((x,i)=>{const g=(+x.amount||0)*(+x.rate||0)/100;return `<div class="invest-item"><div><div class="invest-type">${esc(x.type).toUpperCase()}</div><div class="invest-name">${esc(x.name||x.type)}</div><div class="invest-meta">Investido: ${fmt(x.amount)} · ${(+x.rate||0).toLocaleString('pt-BR')}%</div></div><div class="invest-values"><strong>${fmt((+x.amount||0)+g)}</strong><div class="invest-gain">+ ${fmt(g)}</div><button class="invest-delete" data-del="${i}">Remover</button></div></div>`}).join(''):'<div class="invest-empty">Nenhum investimento cadastrado ainda.</div>';
- };
- $('openInvestments').onclick=()=>{$('investmentsPage').hidden=false};
- $('closeInvestments').onclick=()=>{$('investmentsPage').hidden=true};
- $('addInvestment').onclick=()=>{$('investmentModal').hidden=false;$('invName').value='';$('invAmount').value='';$('invRate').value=''};
- $('invCancel').onclick=()=>{$('investmentModal').hidden=true};
- $('invSave').onclick=()=>{const amount=+($('invAmount').value);if(!(amount>0)){alert('Informe um valor maior que zero.');return}data.push({type:$('invType').value,name:$('invName').value.trim(),amount:amount,rate:+($('invRate').value)||0});save();render();$('investmentModal').hidden=true};
- $('investList').onclick=e=>{const b=e.target.closest('[data-del]');if(b){data.splice(+b.dataset.del,1);save();render()}};
- $('investmentModal').onclick=e=>{if(e.target===$('investmentModal'))$('investmentModal').hidden=true};
- render();
-})();
-</script>
-
-
-<button id="openCharts" class="chart-launch" type="button" title="Gráficos">📊</button>
-<section id="chartsPage" hidden>
- <div class="chart-head"><div><h2 style="margin:0">📊 Evolução financeira</h2><div style="font-size:12px;opacity:.75">Acompanhe seus dados visualmente</div></div><button id="closeCharts" class="chart-close">Voltar</button></div>
- <div class="chart-tabs"><button class="chart-tab active" data-chart="invest">Investimentos</button><button class="chart-tab" data-chart="total">Visão geral</button></div>
- <div class="chart-box"><h3 id="chartTitle">Investimentos por categoria</h3><canvas id="financeChart" class="chart-canvas"></canvas><div class="chart-note" id="chartNote"></div></div>
- <div class="chart-stats"><div class="chart-stat"><small id="stat1Label">Investido</small><strong id="stat1">R$ 0,00</strong></div><div class="chart-stat"><small id="stat2Label">Rendimento</small><strong id="stat2">R$ 0,00</strong></div><div class="chart-stat"><small id="stat3Label">Total</small><strong id="stat3">R$ 0,00</strong></div></div>
-</section>
-
-<script id="nzn-charts-actions">
-(()=> {
- const $=id=>document.getElementById(id);
- const fmt=v=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0}).format(Number(v)||0);
- const canvas=$('financeChart'), ctx=canvas.getContext('2d');
- let mode='invest';
-
- const getInvest=()=>{try{const d=JSON.parse(localStorage.getItem('nzn_finance_investments_v1')||'[]');return Array.isArray(d)?d:[]}catch(e){return []}};
- const getMainValues=()=>{
-   let vals=[];
-   try{
-     for(let i=0;i<localStorage.length;i++){
-       const k=localStorage.key(i),v=localStorage.getItem(k);
-       if(/saldo|balance|deposit|valor|total/i.test(k||'')){const n=parseFloat(v);if(Number.isFinite(n)&&n>=0)vals.push(n)}
-     }
-   }catch(e){}
-   return vals;
- };
- const resize=()=>{
-   const dpr=Math.max(1,window.devicePixelRatio||1), r=canvas.getBoundingClientRect();
-   canvas.width=Math.max(300,r.width*dpr);canvas.height=250*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
- };
- const clear=()=>{const w=canvas.clientWidth,h=250;ctx.clearRect(0,0,w,h);return [w,h]};
- const drawGrid=(w,h)=>{
-   ctx.strokeStyle='rgba(255,255,255,.10)';ctx.lineWidth=1;
-   for(let i=1;i<5;i++){let y=25+i*(h-55)/5;ctx.beginPath();ctx.moveTo(36,y);ctx.lineTo(w-12,y);ctx.stroke()}
- };
- const drawBars=(labels,values)=>{
-   resize();const [w,h]=clear();drawGrid(w,h);const max=Math.max(1,...values);const left=42,right=14,top=22,bottom=42,areaW=w-left-right,areaH=h-top-bottom;
-   if(!values.length){ctx.fillStyle='rgba(255,255,255,.65)';ctx.font='14px sans-serif';ctx.textAlign='center';ctx.fillText('Ainda não há dados para mostrar',w/2,h/2);return}
-   const gap=12,bw=Math.max(28,(areaW-gap*(values.length-1))/values.length);
-   values.forEach((v,i)=>{const x=left+i*(bw+gap),bh=Math.max(2,(v/max)*areaH),y=top+areaH-bh;
-     ctx.fillStyle='rgba(197,250,131,.88)';ctx.fillRect(x,y,bw,bh);
-     ctx.fillStyle='rgba(255,255,255,.9)';ctx.font='11px sans-serif';ctx.textAlign='center';ctx.fillText(labels[i],x+bw/2,h-18);
-   });
- };
- const render=()=>{
-   const inv=getInvest();
-   if(mode==='invest'){
-     const types=['Ações','CDI','CDB'];
-     const values=types.map(t=>inv.filter(x=>x.type===t).reduce((s,x)=>s+(+x.amount||0),0));
-     const total=values.reduce((a,b)=>a+b,0);
-     const gain=inv.reduce((s,x)=>s+(+x.amount||0)*(+x.rate||0)/100,0);
-     $('chartTitle').textContent='Investimentos por categoria';$('chartNote').textContent='O gráfico mostra o valor investido em cada categoria.';
-     drawBars(types,values);$('stat1Label').textContent='Investido';$('stat1').textContent=fmt(total);$('stat2Label').textContent='Rendimento';$('stat2').textContent=fmt(gain);$('stat3Label').textContent='Total';$('stat3').textContent=fmt(total+gain);
-   }else{
-     const invTotal=inv.reduce((s,x)=>s+(+x.amount||0)*(1+(+x.rate||0)/100),0);
-     const mainVals=getMainValues(); const main=mainVals.length?Math.max(...mainVals):0;
-     const values=[main,invTotal];
-     $('chartTitle').textContent='Visão geral';$('chartNote').textContent='Comparação entre saldo disponível detectado no app e investimentos cadastrados.';
-     drawBars(['Saldo','Investimentos'],values);$('stat1Label').textContent='Saldo';$('stat1').textContent=fmt(main);$('stat2Label').textContent='Investimentos';$('stat2').textContent=fmt(invTotal);$('stat3Label').textContent='Total geral';$('stat3').textContent=fmt(main+invTotal);
-   }
- };
- $('openCharts').onclick=()=>{$('chartsPage').hidden=false;setTimeout(render,50)};
- $('closeCharts').onclick=()=>{$('chartsPage').hidden=true};
- document.querySelectorAll('.chart-tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.chart-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');mode=b.dataset.chart;render()});
- window.addEventListener('resize',()=>{if(!$('chartsPage').hidden)render()});
-})();
-</script>
-
-
-<button id="openBackup" class="backup-launch" type="button" title="Backup">💾</button>
-<section id="backupPage" hidden>
- <div class="backup-head"><div><h2 style="margin:0">💾 Backup e restauração</h2><div style="font-size:12px;opacity:.75">Proteja seus dados do NZN FINANCE</div></div><button id="closeBackup" class="backup-close">Voltar</button></div>
- <div class="backup-card"><h3>📤 Criar backup</h3><p>Salve seus dados do aplicativo em um arquivo JSON para guardar ou levar para outro dispositivo.</p><button id="exportBackup" class="backup-action backup-export">Baixar meu backup</button></div>
- <div class="backup-card"><h3>📥 Restaurar backup</h3><p>Importe um backup criado pelo NZN FINANCE. A restauração substituirá os dados locais correspondentes.</p><input id="importBackupFile" type="file" accept="application/json,.json" hidden><button id="chooseBackup" class="backup-action backup-import">Escolher arquivo de backup</button></div>
- <div id="backupStatus" class="backup-status"></div>
-</section>
-<div id="backupConfirm" class="backup-confirm" hidden><div class="backup-confirm-card"><h2>Restaurar este backup?</h2><p id="backupConfirmText">Os dados do backup substituirão os dados atuais do NZN FINANCE neste dispositivo.</p><div class="backup-confirm-actions"><button id="backupCancel" class="backup-cancel">Cancelar</button><button id="backupYes" class="backup-yes">Restaurar</button></div></div></div>
-
-<script id="nzn-backup-actions">
-(()=> {
- const $=id=>document.getElementById(id);
- const PREFIX='nzn_finance_';
- let pending=null;
- const status=(msg,ok=true)=>{const e=$('backupStatus');e.textContent=msg;e.className='backup-status show';e.style.borderColor=ok?'#4b936f':'#b35a5a'};
- const getData=()=>{
-   const data={};
-   for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith(PREFIX))data[k]=localStorage.getItem(k)}
-   return data;
- };
- $('openBackup').onclick=()=>{$('backupPage').hidden=false};
- $('closeBackup').onclick=()=>{$('backupPage').hidden=true};
- $('exportBackup').onclick=()=>{
-   const payload={app:'NZN FINANCE',version:'1.0.10',createdAt:new Date().toISOString(),data:getData()};
-   const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
-   const a=document.createElement('a');a.href=URL.createObjectURL(blob);
-   a.download='NZN_FINANCE_Backup_'+new Date().toISOString().slice(0,10)+'.json';
-   document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
-   status('Backup criado com sucesso. Guarde o arquivo em um local seguro.');
- };
- $('chooseBackup').onclick=()=>$('importBackupFile').click();
- $('importBackupFile').onchange=()=>{
-   const f=$('importBackupFile').files[0];if(!f)return;
-   const r=new FileReader();r.onload=()=>{
-     try{
-       const obj=JSON.parse(r.result);
-       if(!obj||obj.app!=='NZN FINANCE'||typeof obj.data!=='object'||Array.isArray(obj.data))throw new Error('invalid');
-       const keys=Object.keys(obj.data).filter(k=>k.startsWith(PREFIX));
-       if(!keys.length)throw new Error('empty');
-       if(keys.some(k=>typeof obj.data[k]!=='string'))throw new Error('bad');
-       pending=obj;$('backupConfirmText').textContent=`Este backup contém ${keys.length} item(ns) de dados do NZN FINANCE. Os dados locais correspondentes serão substituídos.`;
-       $('backupConfirm').hidden=false;
-     }catch(e){status('Este arquivo não parece ser um backup válido do NZN FINANCE.',false)}
-   };r.readAsText(f);$('importBackupFile').value='';
- };
- $('backupCancel').onclick=()=>{pending=null;$('backupConfirm').hidden=true};
- $('backupYes').onclick=()=>{
-   if(!pending)return;
-   try{
-     Object.keys(pending.data).filter(k=>k.startsWith(PREFIX)).forEach(k=>localStorage.setItem(k,pending.data[k]));
-     pending=null;$('backupConfirm').hidden=true;status('Backup restaurado com sucesso. Recarregue o aplicativo para atualizar todas as telas.');
-   }catch(e){status('Não foi possível restaurar todos os dados neste dispositivo.',false)}
- };
 })();
 </script>
 

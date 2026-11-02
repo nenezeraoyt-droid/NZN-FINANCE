@@ -1,10 +1,21 @@
-NZN FINANCE 1.0.10 - Backup e Restauracao
+NZN FINANCE — Versão 1.0.5
 
-NOVO:
-- Criar backup dos dados locais do NZN FINANCE em arquivo JSON.
-- Importar um backup valido criado pelo app.
-- Confirmacao antes da restauracao.
-- Mensagens de sucesso e erro.
+CORREÇÃO
+- Corrigido o menu superior ☰: os ícones do cabeçalho agora são botões reais.
+- O menu abre/fecha e oferece atalhos para atualização, notificações e ajuda.
+- Tecla Esc e clique fora fecham o menu.
+- Atualizador informa a versão 1.0.5.
 
-Os dados existentes e demais funcionalidades foram preservados.
-Publique os 5 arquivos deste ZIP na raiz do repositorio GitHub.
+PRESERVAÇÃO
+- A chave de armazenamento local foi mantida.
+- Os dados já salvos neste navegador não são apagados pela atualização.
+- O cache do service worker foi atualizado para v9.
+
+PUBLICAÇÃO
+1. No GitHub, abra a pasta que contém o index.html principal do site.
+2. Envie os cinco arquivos deste ZIP diretamente nessa pasta (não envie o ZIP nem uma pasta interna).
+3. Confirme com Commit changes na branch main.
+4. Aguarde o deploy automático do Netlify ficar Published.
+5. Abra o app e use Verificar atualizações.
+
+Os dados continuam locais ao navegador/dispositivo; esta versão não adiciona contas individuais nem sincronização.
