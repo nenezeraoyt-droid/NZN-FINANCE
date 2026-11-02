@@ -48,7 +48,7 @@ body{background:#061b13!important;color:#f4fff7!important}
 .account-overview{background:#07110d;border:1px solid #174c34;border-radius:20px;padding:22px;margin-bottom:15px}
 .account-overview .balance-label{font-size:14px;color:#c0d9ca;font-weight:650}
 .account-overview .balance-value{font-size:30px;font-weight:850;margin-top:8px}
-.account-chip{display:inline-flex;align-items:center;gap:8px;margin-top:17px;padding:9px 13px;border-radius:30px;background:#173b2a;color:#dfffe9;font-size:12px}
+.account-chip{display:inline-flex;align-items:center;gap:8px;margin-top:17px;padding:9px 13px;border-radius:30px;background:#173b2a;color:#dfffe9;font-size:12px}.account-summary{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}.account-summary-item{background:#0d1b14;border:1px solid #24543c;border-radius:14px;padding:12px}.account-summary-item .muted{font-size:10px}.account-summary-item strong{display:block;font-size:18px;margin-top:5px}.account-summary-item p{margin:4px 0 0;color:var(--muted);font-size:10px}@media(max-width:480px){.account-summary{grid-template-columns:1fr}}
 .shortcut-strip{display:flex;gap:18px;overflow-x:auto;padding:14px 3px 20px;scrollbar-width:thin}
 .shortcut{flex:0 0 92px;text-align:center;color:#f0fff5;font-size:12px;font-weight:650}
 .shortcut button{width:78px;height:78px;border:0;border-radius:50%;background:#174b32;color:#d9ff9d;font-size:27px;display:grid;place-items:center;margin:0 auto 9px;cursor:pointer;box-shadow:0 5px 18px #001b1044}
@@ -214,6 +214,10 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
   <div class="balance-label">Saldo principal</div>
   <div class="balance-value" id="saved">R$ 0,00</div>
   <div class="account-chip">🏍️ Meta financeira <strong id="appGoalChip">R$ 25.000,00</strong></div>
+  <div class="account-summary">
+   <div class="account-summary-item"><div class="muted">TOTAL GUARDADO</div><strong id="statSaved">R$ 0,00</strong><p>Saldo registrado neste painel</p></div>
+   <div class="account-summary-item"><div class="muted">MOVIMENTAÇÕES</div><strong id="count">0</strong><p>Depósitos e retiradas</p></div>
+  </div>
   <span id="appMainBalance" hidden>R$ 0,00</span>
  </div>
  <div class="panel side">
@@ -238,9 +242,7 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
 <header class="top"><div class="brand"><div class="mark">S</div><div><div class="eyebrow">PLANO FINANCEIRO • 2027</div><h1>NZN FINANCE</h1></div></div><div class="status">● Controle pessoal de economia</div></header>
 
 <section class="grid">
- <div class="panel stat"><div class="muted">TOTAL GUARDADO</div><strong id="statSaved">R$ 0,00</strong><p>Saldo registrado neste painel</p></div>
  <div class="panel stat"><div class="muted">FALTA PARA A META</div><strong id="statLeft">R$ 25.000,00</strong><p>Quanto falta para completar</p></div>
- <div class="panel stat"><div class="muted">MOVIMENTAÇÕES</div><strong id="count">0</strong><p>Depósitos e retiradas</p></div>
 </section>
 <div class="section-title"><h3>Movimentar sua economia</h3><span>Registre cada depósito ou retirada</span></div>
 <section class="lower">
