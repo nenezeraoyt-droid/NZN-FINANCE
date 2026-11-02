@@ -1,1 +1,10 @@
-NZN FINANCE 1.0.9 - Graficos de evolucao financeira e investimentos. Dados preservados e funcionamento local/offline.
+NZN FINANCE 1.0.10 - Backup e Restauracao
+
+NOVO:
+- Criar backup dos dados locais do NZN FINANCE em arquivo JSON.
+- Importar um backup valido criado pelo app.
+- Confirmacao antes da restauracao.
+- Mensagens de sucesso e erro.
+
+Os dados existentes e demais funcionalidades foram preservados.
+Publique os 5 arquivos deste ZIP na raiz do repositorio GitHub.
