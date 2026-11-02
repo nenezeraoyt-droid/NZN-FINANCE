@@ -118,6 +118,18 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
 .profile-cancel{background:#164d38;color:#fff}
 .profile-save{background:#c5fa83;color:#123b28}
 </style>
+
+<style id="nzn-investments-style">
+.invest-launch{position:fixed;right:14px;bottom:82px;z-index:2000;border:0;border-radius:50%;width:54px;height:54px;background:#c5fa83;color:#123b28;font-size:22px;box-shadow:0 8px 20px #0006;cursor:pointer}
+#investmentsPage{position:fixed;inset:0;z-index:3000;overflow:auto;background:#062b1e;color:#fff;padding:20px 14px 90px}
+#investmentsPage[hidden]{display:none!important}.invest-head{display:flex;justify-content:space-between;align-items:center}
+.invest-close{border:0;border-radius:10px;padding:9px 12px;background:#174a37;color:#fff;font-weight:800}
+.invest-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:14px 0}.invest-card{border:1px solid #2f7555;border-radius:14px;padding:11px;background:#083524}.invest-card small{display:block;opacity:.75;font-size:10px}.invest-card strong{display:block;margin-top:6px}
+.invest-add{width:100%;border:0;border-radius:13px;padding:14px;background:#c5fa83;color:#123b28;font-weight:900;margin-bottom:14px}.invest-list{display:grid;gap:10px}.invest-item{display:flex;justify-content:space-between;gap:10px;border:1px solid #2c7554;border-radius:14px;padding:12px;background:#083524}.invest-type{font-size:10px;font-weight:900;opacity:.7}.invest-name{font-weight:800;margin:3px 0}.invest-meta,.invest-gain{font-size:11px;opacity:.75}.invest-gain{color:#c5fa83}.invest-values{text-align:right}.invest-delete{margin-top:7px;border:0;border-radius:8px;padding:7px 9px;background:#174a37;color:#fff}.invest-empty{text-align:center;padding:25px;opacity:.75;border:1px dashed #39765a;border-radius:14px}
+.invest-modal{position:fixed;inset:0;z-index:4000;background:#0009;display:grid;place-items:center;padding:16px}.invest-modal[hidden]{display:none}.invest-modal-card{width:min(100%,420px);background:#073222;border:1px solid #39815e;border-radius:18px;padding:20px}.invest-modal-card h2{margin:0 0 12px}.invest-modal-card label{display:block;font-size:12px;font-weight:800;margin:9px 0 5px}.invest-modal-card input,.invest-modal-card select{width:100%;box-sizing:border-box;padding:12px;border-radius:10px;border:1px solid #4b936f;background:#0b4a32;color:#fff}.invest-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:16px}.invest-actions button{border:0;border-radius:10px;padding:11px 14px;font-weight:800}.cancel{background:#164d38;color:#fff}.save{background:#c5fa83;color:#123b28}
+@media(max-width:500px){.invest-summary{grid-template-columns:1fr}.invest-card{display:flex;justify-content:space-between}}
+</style>
+
 </head>
 <body>
 <div class="wrap">
@@ -143,7 +155,7 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
    <button type="button" id="menuCheckUpdate">↻ Verificar atualização</button>
    <button type="button" id="menuNotifications">♧ Notificações</button>
    <button type="button" id="menuHelp">? Ajuda</button>
-   <div id="menuFeedback" role="status" aria-live="polite">NZN FINANCE • Versão 1.0.7</div>
+   <div id="menuFeedback" role="status" aria-live="polite">NZN FINANCE • Versão 1.0.8</div>
   </nav>
 </div>
 
@@ -152,7 +164,7 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
   <div style="flex:1;min-width:190px">
    <div class="tag">ATUALIZAÇÃO NZN FINANCE</div>
    <strong style="display:block;margin:6px 0" id="nznUpdateTitle">Verificador de atualizações</strong>
-   <div class="muted" id="nznUpdateMessage">Versão instalada: 1.0.7. Clique em verificar para procurar novidades.</div>
+   <div class="muted" id="nznUpdateMessage">Versão instalada: 1.0.8. Clique em verificar para procurar novidades.</div>
   </div>
   <div style="display:flex;gap:8px;flex-wrap:wrap">
    <button class="btn" id="nznCheckUpdates" type="button">Verificar atualizações</button>
@@ -473,7 +485,7 @@ render();
 
 <script id="nzn-auto-updater">
 (()=>{
- const APP_VERSION='1.0.7';
+ const APP_VERSION='1.0.8';
  const panel=document.getElementById('nznUpdatePanel');
  const checkButton=document.getElementById('nznCheckUpdates');
  const updateButton=document.getElementById('nznUpdateNow');
@@ -674,5 +686,49 @@ render();
  modal.addEventListener('click',e=>{if(e.target===modal)close();});
 })();
 </script>
+
+<button id="openInvestments" class="invest-launch" type="button" title="Investimentos">💰</button>
+<section id="investmentsPage" hidden>
+ <div class="invest-head"><div><h2 style="margin:0">💰 Investimentos</h2><div style="font-size:12px;opacity:.75">Ações, CDI e CDB</div></div><button id="closeInvestments" class="invest-close">Voltar</button></div>
+ <div class="invest-summary">
+  <div class="invest-card"><small>Total investido</small><strong id="investTotal">R$ 0,00</strong></div>
+  <div class="invest-card"><small>Rendimento</small><strong id="investGain">R$ 0,00</strong></div>
+  <div class="invest-card"><small>Total atual</small><strong id="investCurrent">R$ 0,00</strong></div>
+ </div>
+ <button id="addInvestment" class="invest-add">＋ Adicionar investimento</button>
+ <div id="investList" class="invest-list"></div>
+</section>
+<div id="investmentModal" class="invest-modal" hidden><div class="invest-modal-card">
+ <h2>Adicionar investimento</h2>
+ <label>Tipo</label><select id="invType"><option>Ações</option><option>CDI</option><option>CDB</option></select>
+ <label>Nome / descrição</label><input id="invName" maxlength="40" placeholder="Ex.: PETR4 ou CDB Banco X">
+ <label>Valor investido (R$)</label><input id="invAmount" type="number" min="0" step="0.01">
+ <label>Rendimento atual (%) — opcional</label><input id="invRate" type="number" step="0.01" placeholder="Ex.: 5,25">
+ <div class="invest-actions"><button id="invCancel" class="cancel">Cancelar</button><button id="invSave" class="save">Salvar</button></div>
+</div></div>
+
+<script id="nzn-investments-actions">
+(()=> {
+ const KEY='nzn_finance_investments_v1', $=id=>document.getElementById(id);
+ const fmt=v=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(Number(v)||0);
+ let data=[];try{data=JSON.parse(localStorage.getItem(KEY)||'[]');if(!Array.isArray(data))data=[]}catch(e){}
+ const save=()=>localStorage.setItem(KEY,JSON.stringify(data));
+ const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const render=()=>{
+  const total=data.reduce((s,x)=>s+(+x.amount||0),0),gain=data.reduce((s,x)=>s+(+x.amount||0)*(+x.rate||0)/100,0);
+  $('investTotal').textContent=fmt(total);$('investGain').textContent=fmt(gain);$('investCurrent').textContent=fmt(total+gain);
+  $('investList').innerHTML=data.length?data.map((x,i)=>{const g=(+x.amount||0)*(+x.rate||0)/100;return `<div class="invest-item"><div><div class="invest-type">${esc(x.type).toUpperCase()}</div><div class="invest-name">${esc(x.name||x.type)}</div><div class="invest-meta">Investido: ${fmt(x.amount)} · ${(+x.rate||0).toLocaleString('pt-BR')}%</div></div><div class="invest-values"><strong>${fmt((+x.amount||0)+g)}</strong><div class="invest-gain">+ ${fmt(g)}</div><button class="invest-delete" data-del="${i}">Remover</button></div></div>`}).join(''):'<div class="invest-empty">Nenhum investimento cadastrado ainda.</div>';
+ };
+ $('openInvestments').onclick=()=>{$('investmentsPage').hidden=false};
+ $('closeInvestments').onclick=()=>{$('investmentsPage').hidden=true};
+ $('addInvestment').onclick=()=>{$('investmentModal').hidden=false;$('invName').value='';$('invAmount').value='';$('invRate').value=''};
+ $('invCancel').onclick=()=>{$('investmentModal').hidden=true};
+ $('invSave').onclick=()=>{const amount=+($('invAmount').value);if(!(amount>0)){alert('Informe um valor maior que zero.');return}data.push({type:$('invType').value,name:$('invName').value.trim(),amount:amount,rate:+($('invRate').value)||0});save();render();$('investmentModal').hidden=true};
+ $('investList').onclick=e=>{const b=e.target.closest('[data-del]');if(b){data.splice(+b.dataset.del,1);save();render()}};
+ $('investmentModal').onclick=e=>{if(e.target===$('investmentModal'))$('investmentModal').hidden=true};
+ render();
+})();
+</script>
+
 </body>
 </html>
