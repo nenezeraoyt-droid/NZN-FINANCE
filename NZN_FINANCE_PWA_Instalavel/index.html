@@ -130,6 +130,18 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
 @media(max-width:500px){.invest-summary{grid-template-columns:1fr}.invest-card{display:flex;justify-content:space-between}}
 </style>
 
+
+<style id="nzn-charts-style">
+.chart-launch{position:fixed;right:14px;bottom:146px;z-index:2000;border:0;border-radius:50%;width:54px;height:54px;background:#c5fa83;color:#123b28;font-size:22px;box-shadow:0 8px 20px #0006;cursor:pointer}
+#chartsPage{position:fixed;inset:0;z-index:3100;overflow:auto;background:#062b1e;color:#fff;padding:20px 14px 90px}
+#chartsPage[hidden]{display:none!important}.chart-head{display:flex;justify-content:space-between;align-items:center}
+.chart-close{border:0;border-radius:10px;padding:9px 12px;background:#174a37;color:#fff;font-weight:800}
+.chart-tabs{display:flex;gap:8px;margin:14px 0;flex-wrap:wrap}.chart-tab{border:1px solid #3d8562;background:#0a3d2b;color:#fff;border-radius:10px;padding:9px 11px;font-weight:800;font-size:12px}.chart-tab.active{background:#c5fa83;color:#123b28}
+.chart-box{background:#083524;border:1px solid #2f7555;border-radius:16px;padding:12px;margin-bottom:12px}.chart-box h3{margin:0 0 10px;font-size:14px}
+.chart-canvas{width:100%;height:250px;display:block}.chart-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.chart-stat{background:#083524;border:1px solid #2f7555;border-radius:12px;padding:10px}.chart-stat small{display:block;opacity:.72;font-size:10px}.chart-stat strong{display:block;margin-top:5px}
+.chart-note{font-size:11px;opacity:.65;margin-top:8px}
+</style>
+
 </head>
 <body>
 <div class="wrap">
@@ -155,7 +167,7 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
    <button type="button" id="menuCheckUpdate">↻ Verificar atualização</button>
    <button type="button" id="menuNotifications">♧ Notificações</button>
    <button type="button" id="menuHelp">? Ajuda</button>
-   <div id="menuFeedback" role="status" aria-live="polite">NZN FINANCE • Versão 1.0.8</div>
+   <div id="menuFeedback" role="status" aria-live="polite">NZN FINANCE • Versão 1.0.9</div>
   </nav>
 </div>
 
@@ -164,7 +176,7 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
   <div style="flex:1;min-width:190px">
    <div class="tag">ATUALIZAÇÃO NZN FINANCE</div>
    <strong style="display:block;margin:6px 0" id="nznUpdateTitle">Verificador de atualizações</strong>
-   <div class="muted" id="nznUpdateMessage">Versão instalada: 1.0.8. Clique em verificar para procurar novidades.</div>
+   <div class="muted" id="nznUpdateMessage">Versão instalada: 1.0.9. Clique em verificar para procurar novidades.</div>
   </div>
   <div style="display:flex;gap:8px;flex-wrap:wrap">
    <button class="btn" id="nznCheckUpdates" type="button">Verificar atualizações</button>
@@ -485,7 +497,7 @@ render();
 
 <script id="nzn-auto-updater">
 (()=>{
- const APP_VERSION='1.0.8';
+ const APP_VERSION='1.0.9';
  const panel=document.getElementById('nznUpdatePanel');
  const checkButton=document.getElementById('nznCheckUpdates');
  const updateButton=document.getElementById('nznUpdateNow');
@@ -727,6 +739,75 @@ render();
  $('investList').onclick=e=>{const b=e.target.closest('[data-del]');if(b){data.splice(+b.dataset.del,1);save();render()}};
  $('investmentModal').onclick=e=>{if(e.target===$('investmentModal'))$('investmentModal').hidden=true};
  render();
+})();
+</script>
+
+
+<button id="openCharts" class="chart-launch" type="button" title="Gráficos">📊</button>
+<section id="chartsPage" hidden>
+ <div class="chart-head"><div><h2 style="margin:0">📊 Evolução financeira</h2><div style="font-size:12px;opacity:.75">Acompanhe seus dados visualmente</div></div><button id="closeCharts" class="chart-close">Voltar</button></div>
+ <div class="chart-tabs"><button class="chart-tab active" data-chart="invest">Investimentos</button><button class="chart-tab" data-chart="total">Visão geral</button></div>
+ <div class="chart-box"><h3 id="chartTitle">Investimentos por categoria</h3><canvas id="financeChart" class="chart-canvas"></canvas><div class="chart-note" id="chartNote"></div></div>
+ <div class="chart-stats"><div class="chart-stat"><small id="stat1Label">Investido</small><strong id="stat1">R$ 0,00</strong></div><div class="chart-stat"><small id="stat2Label">Rendimento</small><strong id="stat2">R$ 0,00</strong></div><div class="chart-stat"><small id="stat3Label">Total</small><strong id="stat3">R$ 0,00</strong></div></div>
+</section>
+
+<script id="nzn-charts-actions">
+(()=> {
+ const $=id=>document.getElementById(id);
+ const fmt=v=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0}).format(Number(v)||0);
+ const canvas=$('financeChart'), ctx=canvas.getContext('2d');
+ let mode='invest';
+
+ const getInvest=()=>{try{const d=JSON.parse(localStorage.getItem('nzn_finance_investments_v1')||'[]');return Array.isArray(d)?d:[]}catch(e){return []}};
+ const getMainValues=()=>{
+   let vals=[];
+   try{
+     for(let i=0;i<localStorage.length;i++){
+       const k=localStorage.key(i),v=localStorage.getItem(k);
+       if(/saldo|balance|deposit|valor|total/i.test(k||'')){const n=parseFloat(v);if(Number.isFinite(n)&&n>=0)vals.push(n)}
+     }
+   }catch(e){}
+   return vals;
+ };
+ const resize=()=>{
+   const dpr=Math.max(1,window.devicePixelRatio||1), r=canvas.getBoundingClientRect();
+   canvas.width=Math.max(300,r.width*dpr);canvas.height=250*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+ };
+ const clear=()=>{const w=canvas.clientWidth,h=250;ctx.clearRect(0,0,w,h);return [w,h]};
+ const drawGrid=(w,h)=>{
+   ctx.strokeStyle='rgba(255,255,255,.10)';ctx.lineWidth=1;
+   for(let i=1;i<5;i++){let y=25+i*(h-55)/5;ctx.beginPath();ctx.moveTo(36,y);ctx.lineTo(w-12,y);ctx.stroke()}
+ };
+ const drawBars=(labels,values)=>{
+   resize();const [w,h]=clear();drawGrid(w,h);const max=Math.max(1,...values);const left=42,right=14,top=22,bottom=42,areaW=w-left-right,areaH=h-top-bottom;
+   if(!values.length){ctx.fillStyle='rgba(255,255,255,.65)';ctx.font='14px sans-serif';ctx.textAlign='center';ctx.fillText('Ainda não há dados para mostrar',w/2,h/2);return}
+   const gap=12,bw=Math.max(28,(areaW-gap*(values.length-1))/values.length);
+   values.forEach((v,i)=>{const x=left+i*(bw+gap),bh=Math.max(2,(v/max)*areaH),y=top+areaH-bh;
+     ctx.fillStyle='rgba(197,250,131,.88)';ctx.fillRect(x,y,bw,bh);
+     ctx.fillStyle='rgba(255,255,255,.9)';ctx.font='11px sans-serif';ctx.textAlign='center';ctx.fillText(labels[i],x+bw/2,h-18);
+   });
+ };
+ const render=()=>{
+   const inv=getInvest();
+   if(mode==='invest'){
+     const types=['Ações','CDI','CDB'];
+     const values=types.map(t=>inv.filter(x=>x.type===t).reduce((s,x)=>s+(+x.amount||0),0));
+     const total=values.reduce((a,b)=>a+b,0);
+     const gain=inv.reduce((s,x)=>s+(+x.amount||0)*(+x.rate||0)/100,0);
+     $('chartTitle').textContent='Investimentos por categoria';$('chartNote').textContent='O gráfico mostra o valor investido em cada categoria.';
+     drawBars(types,values);$('stat1Label').textContent='Investido';$('stat1').textContent=fmt(total);$('stat2Label').textContent='Rendimento';$('stat2').textContent=fmt(gain);$('stat3Label').textContent='Total';$('stat3').textContent=fmt(total+gain);
+   }else{
+     const invTotal=inv.reduce((s,x)=>s+(+x.amount||0)*(1+(+x.rate||0)/100),0);
+     const mainVals=getMainValues(); const main=mainVals.length?Math.max(...mainVals):0;
+     const values=[main,invTotal];
+     $('chartTitle').textContent='Visão geral';$('chartNote').textContent='Comparação entre saldo disponível detectado no app e investimentos cadastrados.';
+     drawBars(['Saldo','Investimentos'],values);$('stat1Label').textContent='Saldo';$('stat1').textContent=fmt(main);$('stat2Label').textContent='Investimentos';$('stat2').textContent=fmt(invTotal);$('stat3Label').textContent='Total geral';$('stat3').textContent=fmt(main+invTotal);
+   }
+ };
+ $('openCharts').onclick=()=>{$('chartsPage').hidden=false;setTimeout(render,50)};
+ $('closeCharts').onclick=()=>{$('chartsPage').hidden=true};
+ document.querySelectorAll('.chart-tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.chart-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');mode=b.dataset.chart;render()});
+ window.addEventListener('resize',()=>{if(!$('chartsPage').hidden)render()});
 })();
 </script>
 

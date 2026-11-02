@@ -1,1 +1,1 @@
-NZN FINANCE 1.0.8 - Investimentos: Acoes, CDI e CDB. Dados salvos localmente. Publique os 5 arquivos na raiz do GitHub.
+NZN FINANCE 1.0.9 - Graficos de evolucao financeira e investimentos. Dados preservados e funcionamento local/offline.
