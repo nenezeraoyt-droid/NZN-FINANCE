@@ -102,6 +102,22 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
 .profile-photo-menu button:hover{background:#176747}
 </style>
 
+<style id="nzn-profile-name-style">
+.profile-brand-text{min-width:0}
+#profileDisplayName{font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:210px}
+.profile-editor-backdrop{position:fixed;inset:0;z-index:6000;background:#0008;display:grid;place-items:center;padding:18px}
+.profile-editor-backdrop[hidden]{display:none}
+.profile-editor-card{width:min(100%,390px);background:#073222;color:#f4fff6;border:1px solid #39815e;border-radius:18px;box-shadow:0 20px 50px #000a;padding:20px}
+.profile-editor-card h2{margin:0 0 8px;font-size:20px}
+.profile-editor-card p{margin:0 0 16px;opacity:.8;font-size:13px}
+.profile-editor-card label{display:block;font-size:12px;font-weight:700;margin-bottom:7px}
+.profile-editor-card input{width:100%;box-sizing:border-box;border:1px solid #4b936f;border-radius:11px;background:#0b4a32;color:#fff;padding:13px;font:inherit;outline:none}
+.profile-editor-card input:focus{border-color:#c5fa83;box-shadow:0 0 0 3px #c5fa8333}
+.profile-editor-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:16px}
+.profile-editor-actions button{border:0;border-radius:10px;padding:11px 14px;font:700 13px inherit;cursor:pointer}
+.profile-cancel{background:#164d38;color:#fff}
+.profile-save{background:#c5fa83;color:#123b28}
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -113,7 +129,10 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
     <span class="profile-photo-edit" aria-hidden="true">📷</span>
   </button>
   <input id="profilePhotoInput" type="file" accept="image/*" hidden>
-  <div><div style="font-size:10px;opacity:.8;letter-spacing:1.5px">SEU PAINEL FINANCEIRO</div><div>NZN FINANCE</div></div>
+  <div class="profile-brand-text">
+    <div style="font-size:10px;opacity:.8;letter-spacing:1.5px">SEU PAINEL FINANCEIRO</div>
+    <div id="profileDisplayName">NZN FINANCE</div>
+  </div>
  </div>
  <div class="app-top-actions" aria-label="Atalhos">
    <button class="top-action" type="button" id="privacyShortcut" aria-label="Privacidade" title="Privacidade">◉</button>
@@ -124,7 +143,7 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
    <button type="button" id="menuCheckUpdate">↻ Verificar atualização</button>
    <button type="button" id="menuNotifications">♧ Notificações</button>
    <button type="button" id="menuHelp">? Ajuda</button>
-   <div id="menuFeedback" role="status" aria-live="polite">NZN FINANCE • Versão 1.0.6</div>
+   <div id="menuFeedback" role="status" aria-live="polite">NZN FINANCE • Versão 1.0.7</div>
   </nav>
 </div>
 
@@ -133,7 +152,7 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
   <div style="flex:1;min-width:190px">
    <div class="tag">ATUALIZAÇÃO NZN FINANCE</div>
    <strong style="display:block;margin:6px 0" id="nznUpdateTitle">Verificador de atualizações</strong>
-   <div class="muted" id="nznUpdateMessage">Versão instalada: 1.0.6. Clique em verificar para procurar novidades.</div>
+   <div class="muted" id="nznUpdateMessage">Versão instalada: 1.0.7. Clique em verificar para procurar novidades.</div>
   </div>
   <div style="display:flex;gap:8px;flex-wrap:wrap">
    <button class="btn" id="nznCheckUpdates" type="button">Verificar atualizações</button>
@@ -454,7 +473,7 @@ render();
 
 <script id="nzn-auto-updater">
 (()=>{
- const APP_VERSION='1.0.6';
+ const APP_VERSION='1.0.7';
  const panel=document.getElementById('nznUpdatePanel');
  const checkButton=document.getElementById('nznCheckUpdates');
  const updateButton=document.getElementById('nznUpdateNow');
@@ -602,5 +621,58 @@ render();
 })();
 </script>
 
+<script id="nzn-profile-name-actions">
+(()=> {
+ const KEY='nzn_finance_profile_name_v1';
+ const display=document.getElementById('profileDisplayName');
+ const photoBtn=document.getElementById('profilePhotoButton');
+ if(!display || !photoBtn) return;
+
+ const modal=document.createElement('div');
+ modal.className='profile-editor-backdrop'; modal.hidden=true;
+ modal.innerHTML=`<div class="profile-editor-card" role="dialog" aria-modal="true" aria-labelledby="profileEditorTitle">
+   <h2 id="profileEditorTitle">Editar perfil</h2>
+   <p>Escolha como seu nome aparecerá no NZN FINANCE.</p>
+   <label for="profileNameInput">Nome do perfil</label>
+   <input id="profileNameInput" maxlength="28" autocomplete="name" placeholder="Digite seu nome">
+   <div class="profile-editor-actions">
+     <button type="button" class="profile-cancel" id="profileCancel">Cancelar</button>
+     <button type="button" class="profile-save" id="profileSave">Salvar</button>
+   </div>
+ </div>`;
+ document.body.appendChild(modal);
+
+ const input=modal.querySelector('#profileNameInput');
+ const open=()=>{
+   input.value=localStorage.getItem(KEY)||display.textContent.trim()||'NZN FINANCE';
+   modal.hidden=false;
+   setTimeout(()=>{input.focus();input.select();},0);
+ };
+ const close=()=>modal.hidden=true;
+ const save=()=>{
+   const value=input.value.trim().replace(/\s+/g,' ');
+   const finalName=value || 'NZN FINANCE';
+   try{localStorage.setItem(KEY,finalName);}catch(e){}
+   display.textContent=finalName;
+   close();
+ };
+
+ try{
+   const saved=localStorage.getItem(KEY);
+   if(saved) display.textContent=saved;
+ }catch(e){}
+
+ // Clique no nome abre o editor; a foto continua com o menu de foto existente.
+ display.style.cursor='pointer';
+ display.title='Editar nome do perfil';
+ display.addEventListener('click',open);
+ display.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
+ display.tabIndex=0;
+ modal.querySelector('#profileCancel').addEventListener('click',close);
+ modal.querySelector('#profileSave').addEventListener('click',save);
+ input.addEventListener('keydown',e=>{if(e.key==='Enter')save(); if(e.key==='Escape')close();});
+ modal.addEventListener('click',e=>{if(e.target===modal)close();});
+})();
+</script>
 </body>
 </html>

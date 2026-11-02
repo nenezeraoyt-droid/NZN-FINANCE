@@ -1,16 +1,14 @@
-NZN FINANCE — Versão 1.0.6
+NZN FINANCE — Versão 1.0.7
 
-NOVIDADE: FOTO DE PERFIL
-- Foto redonda ao lado do nome NZN FINANCE.
-- Toque/clique na foto para escolher uma imagem do dispositivo.
-- É possível trocar ou remover a foto.
-- A imagem é reduzida antes de salvar para ocupar menos espaço.
-- A foto fica salva localmente neste navegador/dispositivo.
+NOVIDADE: PERFIL COMPLETO
+- A foto de perfil continua ao lado do nome do aplicativo.
+- Clique na foto para escolher, trocar ou remover a imagem.
+- Clique no nome exibido para editar o nome do perfil.
+- O nome e a foto ficam salvos localmente neste navegador/dispositivo.
 
-PRESERVAÇÃO
-- Saldos, depósitos, histórico e demais dados existentes não foram apagados.
-- Esta atualização mantém o armazenamento local já usado pelo aplicativo.
-- A foto de perfil é individual por navegador/dispositivo e não é sincronizada entre aparelhos.
+IMPORTANTE
+- Saldos, depósitos, histórico e demais recursos existentes foram preservados.
+- Nome e foto são locais ao dispositivo/navegador e não são sincronizados automaticamente entre aparelhos.
 
 PUBLICAÇÃO
-Envie os cinco arquivos deste ZIP diretamente para a pasta principal do projeto no GitHub, substituindo os arquivos existentes, e confirme o Commit. Depois aguarde o deploy automático do Netlify.
+Envie os cinco arquivos deste ZIP para a mesma pasta principal do projeto no GitHub e confirme o Commit. O Netlify deverá publicar a atualização automaticamente.
