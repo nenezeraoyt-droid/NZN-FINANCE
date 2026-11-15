@@ -1,10 +1,11 @@
-NZN FINANCE 1.0.10 - Backup e Restauracao
+NZN FINANCE 1.0.11 - Atualização de interface
 
-NOVO:
-- Criar backup dos dados locais do NZN FINANCE em arquivo JSON.
-- Importar um backup valido criado pelo app.
-- Confirmacao antes da restauracao.
-- Mensagens de sucesso e erro.
+ALTERAÇÕES:
+- Removido completamente o Desafio da Economia e seus atalhos.
+- Removido o bloco TOTAL GUARDADO da tela principal.
+- Removido o banner “Faça seu dinheiro trabalhar pelo seu objetivo”.
+- Mantidas as demais funções, incluindo Saldo Principal, Meta Financeira, Movimentações, CDI, notificações, histórico e backup/restauração.
+- Atualizado o identificador do cache PWA para carregar a nova versão.
 
-Os dados existentes e demais funcionalidades foram preservados.
-Publique os 5 arquivos deste ZIP na raiz do repositorio GitHub.
+PUBLICAÇÃO:
+Envie os cinco arquivos deste ZIP para a pasta de publicação configurada no GitHub Pages.
