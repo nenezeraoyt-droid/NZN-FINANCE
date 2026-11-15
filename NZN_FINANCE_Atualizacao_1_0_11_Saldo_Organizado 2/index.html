@@ -215,7 +215,6 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
   <div class="balance-value" id="saved">R$ 0,00</div>
   <div class="account-chip">🏍️ Meta financeira <strong id="appGoalChip">R$ 25.000,00</strong></div>
   <div class="account-summary">
-   <div class="account-summary-item"><div class="muted">TOTAL GUARDADO</div><strong id="statSaved">R$ 0,00</strong><p>Saldo registrado neste painel</p></div>
    <div class="account-summary-item"><div class="muted">MOVIMENTAÇÕES</div><strong id="count">0</strong><p>Depósitos e retiradas</p></div>
   </div>
   <span id="appMainBalance" hidden>R$ 0,00</span>
@@ -230,10 +229,8 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
  <div class="shortcut"><button type="button" onclick="document.getElementById('amount')?.focus()">↘</button>Retirar</div>
  <div class="shortcut"><button type="button" onclick="document.getElementById('cdiInterest')?.scrollIntoView({behavior:'smooth'})">％</button>Juros CDI</div>
  <div class="shortcut"><button type="button" onclick="document.getElementById('bankConnection')?.scrollIntoView({behavior:'smooth'})">▣</button>Conectar banco</div>
- <div class="shortcut"><button type="button" onclick="document.getElementById('challengeGrid')?.scrollIntoView({behavior:'smooth'})">◎</button>Desafio</div>
  <div class="shortcut"><button type="button" onclick="document.getElementById('historyWrap')?.scrollIntoView({behavior:'smooth'})">↗</button>Histórico</div>
 </div>
-<div class="home-promo"><div><strong>Faça seu dinheiro trabalhar pelo seu objetivo</strong><span>Acompanhe sua economia e os juros CDI no mesmo painel.</span></div><div style="font-size:30px">🌱</div></div>
 <div class="home-card-grid">
  <div class="home-mini-card"><small>Progresso da meta</small><strong id="percent">0%</strong><div class="track" style="margin-top:12px"><div class="fill" id="bar" style="width:0%"></div></div><span id="appProgress" hidden>0%</span></div>
  <div class="home-mini-card"><small>Quanto falta para sua meta</small><strong id="remaining">Faltam R$ 25.000,00</strong><span id="appRemaining" hidden>R$ 25.000,00</span><span id="targetLabel" hidden>Meta: R$ 25.000,00</span></div>
@@ -249,8 +246,6 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
  <div class="panel"><div class="tag">NOVO LANÇAMENTO</div><div class="field"><label for="amount">Valor (R$)</label><input id="amount" type="number" min="0.01" step="0.01" placeholder="Ex.: 1000"></div><div class="field"><label for="description">Descrição</label><input id="description" maxlength="70" placeholder="Ex.: Depósito mensal"></div><div class="actions"><button class="btn" id="add">＋ Registrar depósito</button><button class="btn danger" id="withdraw">− Registrar retirada</button></div><div class="notice" id="notice" aria-live="polite"></div></div>
  <div class="panel"><div class="tag">CONFIGURAÇÕES DA META</div><div class="row"><div class="field"><label for="goal">Meta total (R$)</label><input id="goal" type="number" min="1" step="100" value="25000"></div><div class="field"><label for="monthly">Depósito mensal (R$)</label><input id="monthly" type="number" min="1" step="50" value="1000"></div></div><div class="actions"><button class="btn secondary" id="saveSettings">Salvar planejamento</button></div><p class="muted">Ajuste os valores quando seu planejamento mudar.</p></div>
 </section>
-<div class="section-title"><h3>Desafio de economia • R$ 500</h3><span>Pequenos valores também contam</span></div>
-<section class="panel"><div class="challenge"><div><strong id="challengeTotal">R$ 0,00 <span class="muted" style="font-size:12px">de R$ 500,00</span></strong><p id="challengeText">Marque valores que você já separou.</p></div><button class="btn secondary" id="resetChallenge">Reiniciar</button></div><div class="progress-head"><span>Progresso do desafio</span><b id="challengePercent">0%</b></div><div class="track"><div class="fill" id="challengeBar"></div></div><div class="challenge-grid" id="challengeGrid"></div></section>
 
 
 <div class="section-title"><h3>Juros positivos • CDI</h3><span>Rendimento somado ao saldo principal</span></div>
@@ -301,15 +296,14 @@ input{background:#071b12;border-color:#286343;color:#f2fff6}
 <nav class="bottom-app-nav" aria-label="Navegação rápida">
  <button class="active" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})">⌂ Início</button>
  <button type="button" onclick="document.getElementById('cdiInterest')?.scrollIntoView({behavior:'smooth'})">％ CDI</button>
- <button type="button" onclick="document.getElementById('challengeGrid')?.scrollIntoView({behavior:'smooth'})">◎ Metas</button>
  <button type="button" onclick="document.getElementById('historyWrap')?.scrollIntoView({behavior:'smooth'})">▤ Histórico</button>
 </nav>
 
-<div class="foot">NZN FINANCE 2027 • Seus dados ficam salvos neste navegador e neste dispositivo.<br>Este painel não está conectado ao banco ou à sua conta financeira. Rendimentos, taxas e preço final da moto não estão incluídos.</div>
+<div class="foot">NZN FINANCE 1.0.11 • Seus dados ficam salvos neste navegador e neste dispositivo.<br>Este painel não está conectado ao banco ou à sua conta financeira. Rendimentos, taxas e preço final da moto não estão incluídos.</div>
 </div>
 <script>
 const KEY='projetoSahara2027_download_v1';
-const initial={goal:25000,monthly:1000,balance:0,history:[],challenge:[]};
+const initial={goal:25000,monthly:1000,balance:0,history:[]};
 const brl=v=>Number(v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
 let data;try{data={...initial,...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch(e){data={...initial}}
 function persist(){localStorage.setItem(KEY,JSON.stringify(data));render()}
@@ -338,22 +332,15 @@ function render(){
  document.getElementById('remaining').textContent=left>0?'Faltam '+brl(left):'Meta alcançada!';document.getElementById('targetLabel').textContent='Meta: '+brl(goal);
  document.getElementById('monthlyHero').textContent=brl(data.monthly);document.getElementById('months').textContent=left===0?'Concluída':months+' '+(months===1?'mês':'meses');
  document.getElementById('dateNote').textContent=left===0?'Parabéns por alcançar seu objetivo!':'Estimativa sem rendimentos ou mudanças no valor mensal';
- document.getElementById('statSaved').textContent=brl(bal);document.getElementById('statLeft').textContent=brl(left);document.getElementById('count').textContent=data.history.length;
+ document.getElementById('statLeft').textContent=brl(left);document.getElementById('count').textContent=data.history.length;
  document.getElementById('goal').value=data.goal;document.getElementById('monthly').value=data.monthly;
- const total=data.challenge.reduce((a,b)=>a+b,0),cp=Math.min(100,total/500*100);
- document.getElementById('challengeTotal').innerHTML=brl(total)+' <span class="muted" style="font-size:12px">de R$ 500,00</span>';
- document.getElementById('challengePercent').textContent=cp.toFixed(0)+'%';document.getElementById('challengeBar').style.width=cp+'%';
- document.getElementById('challengeText').textContent=total>=500?'Desafio concluído! Muito bem.':'Marque os valores que você já separou para o desafio.';
- const grid=document.getElementById('challengeGrid');grid.innerHTML='';
- for(let n=10;n<=500;n+=10){const b=document.createElement('button');b.textContent='R$ '+n;b.className='btn '+(data.challenge.includes(n)?'':'secondary');b.onclick=()=>{data.challenge=data.challenge.includes(n)?data.challenge.filter(x=>x!==n):[...data.challenge,n];persist()};grid.appendChild(b)}
  const hist=[...data.history].reverse(),wrap=document.getElementById('historyWrap');
  if(!hist.length){wrap.innerHTML='<div class="empty">Nenhuma movimentação registrada ainda.</div>'}else{
  let table='<div style="overflow-x:auto"><table class="history"><thead><tr><th>DATA</th><th>DESCRIÇÃO</th><th>TIPO</th><th>VALOR</th></tr></thead><tbody>';
  hist.forEach(x=>{table+=`<tr><td>${escapeHtml(x.date)}</td><td>${escapeHtml(x.desc)}</td><td>${x.type==='in'?'Depósito':(x.type==='interest'?'Juros CDI':'Retirada')}</td><td class="${(x.type==='in'||x.type==='interest')?'positive':'negative'}">${x.type==='out'?'−':'+'} ${brl(x.amount)}</td></tr>`});table+='</tbody></table></div>';wrap.innerHTML=table;
  }
 }
-document.getElementById('resetChallenge').onclick=()=>{if(confirm('Reiniciar apenas o desafio de R$ 500?')){data.challenge=[];persist()}};
-document.getElementById('resetAll').onclick=()=>{if(confirm('Tem certeza? Isso apagará saldo, histórico e desafio salvos neste navegador.')){data={...initial,history:[],challenge:[]};persist();notice('Painel zerado.')}};
+document.getElementById('resetAll').onclick=()=>{if(confirm('Tem certeza? Isso apagará saldo e histórico salvos neste navegador.')){data={...initial,history:[]};persist();notice('Painel zerado.')}};
 document.getElementById('export').onclick=()=>{
  const rows=[['Data','Descrição','Tipo','Valor'],...data.history.map(x=>[x.date,x.desc,x.type==='in'?'Depósito':(x.type==='interest'?'Juros CDI':'Retirada'),x.amount])];
  const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(';')).join('\n');
